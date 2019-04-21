@@ -21,7 +21,7 @@ series: ["Linux"]
 
 肥宅使用的發行版是 `ArchLinux`，圖形界面是 `KDE Plasma`。
 
-![](index/1.png)
+![](https://i.loli.net/2019/04/21/5cbc833695caf.png)
 
 ## 下載安裝 VScode
 
@@ -33,7 +33,7 @@ sudo pacman -S code
 
 >註：因爲圖形界面的使用者一定是一般使用者，不可能是**超級使用者**，所以在輸 `pacman` 前面要加上 `sudo`。
 
-![](index/2.png)
+![](https://i.loli.net/2019/04/21/5cbc8336a2fe6.png)
 
 輸入 `y` 並按下 `Enter`。
 
@@ -50,7 +50,8 @@ sudo pacman -S code
 ```bash
 sudo pacman -S gcc
 ```
-![](index/3.png)
+
+![](https://i.loli.net/2019/04/21/5cbc8336b145c.png)
 
 輸入 `y` 並按下 `Enter`。
 
@@ -59,7 +60,8 @@ sudo pacman -S gcc
 ```bash
 sudo pacman -S gdb
 ```
-![](index/4.png)
+
+![](https://i.loli.net/2019/04/21/5cbc8336a5cc3.png)
 
 輸入 `y` 並按下 `Enter`。
 
@@ -73,7 +75,8 @@ sudo pacman -S gdb
 * [GDB-維基百科，自由的百科全書](https://zh.wikipedia.org/wiki/GNU%E4%BE%A6%E9%94%99%E5%99%A8)
 
 什麼？！你還是不懂？
-![](index/5.png)
+
+![](https://i.loli.net/2019/04/21/5cbc83369f8da.png)
 
 ## 安裝 VScode 插件
 
@@ -81,13 +84,13 @@ sudo pacman -S gdb
 
 在插件搜尋處搜尋自己要的語言，像肥宅我是用**繁體中文**，所以只要在搜尋處打上 `traditional` 就會出現安裝插件，按下 `Install`，並等它裝好 `Reload`就會切換到自己想要的語言界面，如果你想裝的是**簡體中文**，可以輸入 `simplified`，其實你只要輸入 `Chinese` 的 `ch` 基本繁體簡體都會顯示出來。
 
-![](index/6.png)
+![](https://i.loli.net/2019/04/21/5cbc8336c215f.png)
 
 ### 安裝 C/C++ 插件
 
 搜尋 `C/C++` 並安裝
 
-![](index/7.png)
+![](https://i.loli.net/2019/04/21/5cbc8336cca49.png)
 
 **其餘插件推薦請參考 [Visual Studio Code 推薦使用插件](https://hackmd.io/s/B1LNZviPE)**
 
@@ -95,7 +98,7 @@ sudo pacman -S gdb
 
 點擊左下角滾輪中的設定，再點擊右上角的 `{}`，可進入 `settings.json`。
 
-![](index/8.png)
+![](https://i.loli.net/2019/04/21/5cbc8336c7ef6.png)
 
 ### settings.json
 ```jsonld=
@@ -126,17 +129,17 @@ sudo pacman -S gdb
 
 >註：下圖為綠色波浪底線示意圖
 
-![](index/9.png)
+![](https://i.loli.net/2019/04/21/5cbc8336c9da3.png)
 
 讓我們開始配置吧~
 
 >註：建議各位將所有代碼集中在一個資料夾方便管理，並有序分類。
 
-![](index/10.png)
+![](https://i.loli.net/2019/04/21/5cbc83369270a.png)
 
 >註：這裡使用的是 `Dolphin` 來檢視檔案，類似 `Windows OS` 的檔案總管，這裡就不介紹這個。
 
-![](index/11.png)
+![](https://i.loli.net/2019/04/21/5cbc83c9226cc.png)
 
 >註：資料夾名或檔案名開頭是 `.` 的話會隱藏的，e.g. `.vscode` `.git` ，必須開啟可以顯示的設定才能看到。
 
@@ -316,6 +319,7 @@ sudo pacman -S gdb
 
 **注意：這裡肥宅分了四個類型，分別是 `Run C` `Run C++` `Debug C` `Debug C++`，
 其中每一個 `"program"` （進行調試的程序路徑）參數都是
+
 `"${workspaceFolder}/${fileBasenameNoExtension}.out"`，
 `"preLaunchTask"` 的值則是對應到 `task.json` 的 `"label"`，如果兩者對應的名稱出錯在調試時會出現找不到對應名稱的錯誤訊息，要你開啟 `launch.json` 重新設定。**
 
@@ -398,11 +402,11 @@ sudo pacman -S gdb
 
 肥宅現在要調試 `1.c` 這個檔案，可以在代碼中設置**斷點**，並選擇 `Debug C`。
 
-![](index/12.png)
+![](https://i.loli.net/2019/04/21/5cbc83c91defe.png)
 
 >註：調試快捷鍵 `F5`
 
-![](index/13.png)
+![](https://i.loli.net/2019/04/21/5cbc83c9333fa.png)
 
 左側可以看到變數的值
 

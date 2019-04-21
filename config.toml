@@ -32,11 +32,11 @@ pygmentsuseclasses         = true
     identifier             = "blog"
     url                    = "blog/"  
 
-  [[menu.main]]
-    name                   = "Moment"
-    weight                 = -110
-    identifier             = "moment"
-    url                    = "moment/" 
+  # [[menu.main]]
+  #   name                   = "Moment"
+  #   weight                 = -110
+  #   identifier             = "moment"
+  #   url                    = "moment/" 
 
   [[menu.main]]
     name                   = "About"
