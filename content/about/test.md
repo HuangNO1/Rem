@@ -14,5 +14,6 @@ My favorite music is the theme song of *PSYCHO-PASS*, 名前のない怪物. My 
 ## contact
 
 - QQ : 2116280484
-
+- Telegram : @HuangNO1
+- E-mail : fh831.cp9gw@gmail.com
 > I don't often contact with others by WeChat.
