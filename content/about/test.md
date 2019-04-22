@@ -3,6 +3,7 @@ date = "2019-04-19T20:29:37-07:00"
 draft = false
 title = "About"
 categories = ["About"]
+
 +++
 
 ![](https://i.loli.net/2019/04/21/5cbc8b63098ca.jpg)
@@ -16,4 +17,6 @@ My favorite music is the theme song of *PSYCHO-PASS*, 名前のない怪物. My 
 - QQ : 2116280484
 - Telegram : @HuangNO1
 - E-mail : fh831.cp9gw@gmail.com
+
+
 > I don't often contact with others by WeChat.
