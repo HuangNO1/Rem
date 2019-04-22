@@ -1,9 +1,8 @@
 +++
-date = "2015-08-19T20:29:37-07:00"
+date = "2019-04-19T20:29:37-07:00"
 draft = false
 title = "About"
-categories = ["test"]
-
+categories = ["About"]
 +++
 
 ![](https://i.loli.net/2019/04/21/5cbc8b63098ca.jpg)
