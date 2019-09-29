@@ -1,5 +1,5 @@
 ---
-title: "Archlinux 安裝"
+title: "Archlinux 安裝 - Windows & Archlinux 雙系統"
 date: 2019-09-28T15:24:28+08:00
 draft: false
 weight: 70
@@ -13,7 +13,7 @@ series: ["Linux"]
 ---
 2019/09/28 edited by Huang Po-Hsun
 
-![0.png](https://i.loli.net/2019/09/29/4GuroyLhaBXediw.png)
+![0.png](https://i.loli.net/2019/09/30/6qMYyrcQNoIm2aR.png)
 
 ## 前言
 
@@ -61,13 +61,13 @@ e.g.
 
 每台電腦進入 Bios 的方法都不同，像我的電腦是聯想 y7000p，所以我在開機時一直按住 `Fn + F2` ，就能進入 Bios 調整開機順序，因為幫室友們裝了 Arch，所以 ThinkPad 是 `F1`，華碩是按 `Esc` 或 `F2`，小米是 `F2`，我記得小米筆電進入 Bios 還需要輸入 Password，有點麻煩就是了。當然還是勸大家上網搜一下自己電腦型號的進入 Bios 快捷建。
 
-成功進入 USB 後選擇第一個選項 `Boot Arch Linux (X86_64)` 按 `Enter` 進入，當你看到 `root #` 就代表你已經進入 USB 裡的 Arch 安裝鏡像。
+成功進入 USB 後選擇第一個選項 `Boot Arch Linux (X86_64)` 按 `Enter我們的` 進入，當你看到 `root #` 就代表你已經進入 USB 裡的 Arch 安裝鏡像。
 
 > 註：切記要是 UEFI 開機，因為我們最後要在 Bios 安裝引導程序，來引導我們開機選擇進入的 OS。如果沒有使用 UEFi 開機的話會裝不上引導程序 `grub`。
 
-![5.png](https://imgpoi.com/i/71GFNM.png)
+![5.png](https://i.loli.net/2019/09/30/q4zMECx7tpkNLK1.png)
 
-### 確認連到網路
+### 6. 確認連到網路
 
 在安裝過程我們需要用到網路，我們需要確認我們連的到網路，輸入以下指令
 
@@ -81,7 +81,7 @@ ping baidu.com # 確認是否可連上百度
 
 如果無法從 `baidu.com` 接收 `packets`，**掉包率（packets loss）100%**，代表你沒有連上網路，這時我建議插網線連有線網路，不建議連無線網路，因為在無線網路使用上會出些問題，不建議新手使用，我最常用的方法是將使用**數據線**將電腦與手機連結，然後手機開 **USB 共用網路**，手機可以連行動數據或 WiFi 給電腦網路。
 
-1. 插上網線
+1.插上網線
 
 ```zsh
 ip link #顯示自己的網路接口
@@ -99,65 +99,161 @@ ping baidu.com # 再測試一次是否連網
 
 以上如果沒問題就可跳過用手機共用網路步驟
 
-2. 用數據線將手機與電腦連結，並開啟 USB 共用網路
+2.用數據線將手機與電腦連結，並開啟 USB 共用網路
+
+輸入 `ip link` 後出現了新的有線接口 `enp0s20f0u1`，此為你的手機網路接口。
+
+> 註：通常自己電腦的有線網路接口名稱比手機的網路接口名稱短。
+
 ![8.png](https://i.loli.net/2019/09/29/RmvsnrfoKt5caUH.png)
 
+```zsh
+ip link set enp7s0 down # 關閉自己電腦的有線接口
+ip link set enp0s20f0u1 up # 開啟手機的有線接口
+dhcpcd enp0s20f0u1 # 連接手機的有線接口
+ping baidu.com # 測試是否連上網路
+```
 
+通常到這裡網路是連上的，如果還連不上那可能就要連無線 WiFi 了，我就不多說明了，可以參考 [Arch WiKi](https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 和 [某網友的 Blog](http://irislr.me/2017/01/07/linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9C%89%E7%BA%BF%EF%BC%86%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5/) 和 [某教程網](https://www.itread01.com/p/149560.html) 有提及，因為之前我幫我朋友安裝 Archlinux 時要連無線 WiFi 時搞了很久，還出了錯誤，最後直接使用手機的共用網路才解決。
 
+### 7. 更新系統時間
 
+使用 `timedatectl` 確保系統時間是準確的，後面我們在**同步數據庫**時需要系統時間與網路時間的同步。
 
+> 註：這移步真的很重要，我之前因為忘了這一步驟導致數據庫無法同步，開啟時間同步後還要重裝一次系統 `pacman -S linux`
 
+```zsh
+timedatectl set-ntp true # 開啟時間同步
+timedatectl status # 檢查服務狀態
+```
 
+![9.png](https://i.loli.net/2019/09/30/C5vDyeu6cOnIgs4.png)
 
+請確保 `NTP service` 狀態為 `active`，且確定自己的系統時間是否正確。
 
+### 8. 分割磁區
 
+**我們使用 `cfdisk` 來分割磁區**
 
+Arch WiKi 建議的分區參考
 
+![10.png](https://i.loli.net/2019/09/30/dQUhfT6SNIAPq4D.png)
 
+我們已經在 Windows 分割好了我們的磁區。
 
+```zsh
+lsblk # 檢查磁區狀態
+```
 
+![11.png](https://i.loli.net/2019/09/30/NMrOdjfom7FBA54.png)
 
+以上是我的磁區狀態，因為我是已經裝好了系統，所以會顯示這樣的狀態，但你現在的狀態是不會顯示出你切割出來的磁區，這裡**記得你的磁區大小**以便在這裡辨認出你的磁區哪些是固態硬碟和虛擬硬碟。
 
+> 註：有些指南標示 `/dev/sdX` 的 `sdX` 意思是你的磁區代號，有些電腦的固態硬碟代號是 `sdb` 或是 `nvme0n1`，虛擬硬碟通常代號是 `sda`，你可以將 `sdX` 當成一個代稱，因為沒人保證你電腦裡的硬碟的代號為何，像我有個室友他電腦的固態硬碟是 `sdb`。
+>
+> 在輸入路徑時可以搭配 `Tab` 鍵快速輸入，輸入開頭先按一次 `Tab`，如果指令行下出現許多路徑可按兩次 `Tab` 選取。
 
+**在這裡我們假設你的固態硬碟是 `nvme0n1` - 割出 40GB 給 `root`，虛擬硬碟是 `sda` - 割出 102GB**。輸入以下指令進入管理磁區界面。
 
+```zsh
+cfdisk /dev/nvme0n1 # 管理固態硬碟磁區
+```
 
+![12.png](https://i.loli.net/2019/09/30/Mm78ohqWiusweDQ.png)
 
+這裡是管理你的固態硬碟界面。先使用上下鍵調到你割出來的 `Free Space` 40GB，左右鍵調到 `New` 按下 `Enter`，輸好要分配出的大小再按 `Enter` 將空間分配出來，接著左右鍵調到 `Type`，**選取 `Linux root (ARM-64)`**，這是 64 bit 的系統，如果你的電腦是 32 bit 請選擇 `Linux root (X86)`，接著**確認你的磁區上面有個磁區類型是 `EFI System` ，並記住磁區代號或大小**，這裡是要掛載 `boot` 的磁區，如果沒有的話請找到可以自己在割出大概從某個磁區割出 250MB 調整類型為 `EFI System` 分區。接著左右鍵調到 `Write` 寫入設定，輸入 `yes` 按下 `Enter`，確認無誤後可以按下 `Quit` 離開此界面，再次 輸入 `lsblk` 就可以在 `/dev/nvme0n1` 看到你分割出的空間了。
 
+> 註：記得一定要寫入，我之前很多次都忘了寫入，重搞了幾次。
 
+```zsh
+cfdisk /dev/sda # 管理虛擬硬碟磁區
+```
 
+示意圖我就不放了，方式都跟上個步驟大同小異，分別割出 2GB `Type` 為 `Linux Swap` 和 100GB `Type` 為 `Linux home` 的分區。
 
+> 註：有些人的電腦可能不知道沒有我上述講的類型，如果找不到沒有 `Linux root (ARM-64)`、`Linux root (X86)`、`Linux home`，可以將 `Type` 改成 `Linux filesystem`，只是 `EFI System` 與 `Linux swap` 不能這樣搞，而且這兩類型是找得到的。
 
+### 9. 格式化磁區
 
+當分區建好後，我們需要對此格式化。每種類型的磁區格式化方式都不相同。
 
+> 註：我們假設你分割出的 40GB 固態硬碟空間磁區代號為 `nvme0n1p5`，`boot` 為 `nvme0n1p1`，2GB `Swap` 為 `sda3` ，100GB `home` 為 `sda4`。
 
+* 文件系統 `root` 與 `home`
 
+```zsh
+mkfs.ext4 /dev/nvme0n1p5 #格式化 root
+mkfs.ext4 /dev/sda4 #格式化 home
+```
 
+> 註：`mkfs.ext4` 的創建方式與 `mkfs.fat` 的差別在於前者有創建 `journal` 日誌，後者沒有。注意：文件系統一定要創建日誌，不然個人的資料可能會造成損失等後果。
 
+* EFI 系統分區 `boot`
 
+```zsh
+mkfs.fat -F32 /dev/nvme0n1p1 # 格式化 boot
+```
 
+* 置換空間 `swap`
 
+```zsh
+mkswap /dev/sda3 # 格式化 swap
+swapon /dev/sda3 # 掛載置換空間
+```
 
+### 10. 掛載分區
 
+因為根目錄 `/mnt` 已在你的 USB 存在，所以不需要創建。**注意：必須優先掛載 `/mnt` 再掛載其它目錄**。
 
+```zsh
+mount /dev/nvme0n1p5 /mnt # 掛載根目錄 root
+mkdir /mnt/boot # 創建 /boot 目錄
+mount /dev/nvme0np1 /mnt/boot # 掛載 /boot
+mkdir /mnt/home # 創建 /home 目錄
+mount /dev/sda4 /mnt/home # 掛載 /home
+lsblk # 查看分區無誤
+```
 
+掛載好後，接下來 `genfstab` 將會自動檢測掛載的文件系統和置換空間。
 
+## 安裝
 
+### 1. 選擇鏡像
 
+編輯 `/etc/pacman.d/mirrorlist` 文件，將你的所在的鏡像地址優先排在前面，在列表中越前面的地址修先級越高。
 
+```zsh
+vim /etc/pacman.d/mirrorlist # 編輯文件
+```
 
+關於 Vim 的編輯指令可參考 [超簡明 Vim 操作介紹](https://gitbook.tw/chapters/command-line/vim-introduction.html)，用起來其實不難。
 
+![13.png](https://i.loli.net/2019/09/30/tj7PcF9vMVKZ3Bh.png)
 
+關於 Vim 移動整行的指令
 
+```vim
+:12, 13 move 6 # 將第 12, 13 行剪貼至第 6 行
+```
 
+像我目前所在的地區為 China，所以我將 China 的鏡像源都移至最開頭。
 
+![14.png](https://i.loli.net/2019/09/30/8jfCaXqbSOEWT5M.png)
 
+編輯好並確認無誤後退出 Vim 編輯器。
 
+### 2. 安裝基本系統
 
+使用 `pacstrap` 腳本安裝 `base` 組：
 
+> 註：在這裡請勿必確認你的 `/boot` 是掛載在 `EFI Syetem` 分區上，不然後面需要進入 `Chroot` 執行 `pacman -S linux` 重裝系統。
 
+```zsh
+ping baidu.com # 確認此時你是連上網的
+pacstrap /mnt base
+```
 
-
-
+如果你是第二次裝 ArchLinuc 的小夥伴，你可能會遇到下載完後安裝時
 
 
 
