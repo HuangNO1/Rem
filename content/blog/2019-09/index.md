@@ -19,17 +19,17 @@ series: ["Linux"]
 
 我分享一下如何安裝 Arch Linux 的方法，因為我之前裝 Arch Linux 時踩了很多坑，加上我是小白，所以遇到的問題很多，我會在這篇文章中教導各位如何安裝 Arch Linux 在各位的電腦，優雅地使用 Arch Linux 發行版，這篇文章是面向小白向的教學文，這篇只會提及如何安裝，至於初始化與其餘部份會另外寫篇文章。
 
-由於我的電腦型號是**聯想 y7000p**，所以遇到的坑真的很多，我會按特殊情況講解，雖然 [Arch WIKI Installation guide](https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 的安裝指南已經很詳細了，但對於剛接觸的我根本是火星文 :( 
+由於我的電腦型號是**聯想 y7000p**，所以遇到的坑真的很多，我會按特殊情況講解，雖然 [Installation guide - ArchWiki](https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 的安裝指南已經很詳細了，但對於剛接觸的我根本是火星文 :( 
 
 ## 安裝前準備
 
-### 1. 至 [清華大學 Archlinux 軟件鏡像站](https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/)下載最新版的 `archlinux*.ios` 鏡像
+### 1. 至 [清華大學 Archlinux 軟件鏡像站](https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/)下載最新版的 archlinux*.ios 鏡像
 
 ![1.png](https://i.loli.net/2019/09/29/28CjvXVRUZJzqQ3.png)
 
 ### 2. 下載 [Rufus](https://rufus.ie/) - 用來匯入 Archlinux 鏡像至 USB
 
-![2.png](https://i.loli.net/2019/09/29/CwW9MLR5IZkSru4.png)
+![2.png](https://i.loli.net/2019/09/29/CwW9MLR5IZkSru4.，png)
 
 ### 3. 準備一個至少 8G 的 USB
 
@@ -45,7 +45,7 @@ e.g.
 
 **在固態硬碟割出 40GB 空間（40GB `root`），在虛擬硬碟割出102GB 空間（2GB `swap`, 100GB `home`）**，此時別格式化割出來的磁區，讓它們保持為**未配置狀態**。
 
-在 Windows 工作列的 `win` 圖標上點擊滑鼠右鍵選擇**磁區管理**，將自己的磁區切割，現在大部份的電腦是 110GB 左右的固態 SSD 和 1TB 左右的虛擬硬碟，當然少部份例外，我建議固態硬碟割出至少 40GB 給 `/root` 根目錄（類似 Windows的 C槽），接著可以在虛擬硬碟割出 100GB 以上給 `/home` 家目錄，當然也有特殊情況，像我的室友他電腦只有固態 SSD 所以只能割固態硬碟給 `/home`，我室友我幫他割了 30GB 給 `/root`，40GB 給 `/home`，2GB 給 `swap`。
+在 Windows 工作列的 `win` 圖標上點擊滑鼠右鍵選擇**磁區管理**，將自己的磁區切割，現在大部份的電腦是 110GB 左右的固態 SSD 和 1TB 左右的虛擬硬碟，當然少部份例外，我建議固態硬碟割出至少 40GB 給 `/root` 根目錄（類似 Windows的 C槽），接著可以在虛擬硬碟割出 100GB 以上給 `/home` 家目錄，也有特殊情況，像我的室友他電腦只有固態 SSD 所以只能割固態硬碟給 `/home`，我室友我幫他割了 30GB 給 `/root`，40GB 給 `/home`，2GB 給 `swap`。
 
 > 註：我強烈不建議將 Linux 灌在 **USB** 上或是像**移動固態 SSD** 等移動裝置上，首先在啟動上很不方便，每次都要進入 Bios 調整開機順序，又容易電腦卡頓，電腦容易發燙，加上電源的耗電速度快等因素，其實我就在我室友的移動固態 SSD 上嘗試過，甚至安裝失敗，連圖形界面都進不去。
 
@@ -114,13 +114,13 @@ dhcpcd enp0s20f0u1 # 連接手機的有線接口
 ping baidu.com # 測試是否連上網路
 ```
 
-通常到這裡網路是連上的，如果還連不上那可能就要連無線 WiFi 了，我就不多說明了，可以參考 [Arch WiKi](https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 和 [某網友的 Blog](http://irislr.me/2017/01/07/linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9C%89%E7%BA%BF%EF%BC%86%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5/) 和 [某教程網](https://www.itread01.com/p/149560.html) 有提及，因為之前我幫我朋友安裝 Archlinux 時要連無線 WiFi 時搞了很久，還出了錯誤，最後直接使用手機的共用網路才解決。
+通常到這裡網路是連上的，如果還連不上那可能就要連無線 WiFi 了，我就不多說明了，可以參考 [Wireless network configuration (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 和 [某網友的 Blog](http://irislr.me/2017/01/07/linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9C%89%E7%BA%BF%EF%BC%86%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5/) 和 [某教程網](https://www.itread01.com/p/149560.html) 有提及，因為之前我幫我朋友安裝 Archlinux 時要連無線 WiFi 時搞了很久，還出了錯誤，最後直接使用手機的共用網路才解決。
 
 ### 7. 更新系統時間
 
 使用 `timedatectl` 確保系統時間是準確的，後面我們在**同步數據庫**時需要系統時間與網路時間的同步。
 
-> 註：這移步真的很重要，我之前因為忘了這一步驟導致數據庫無法同步，開啟時間同步後還要重裝一次系統 `pacman -S linux`
+> 註：這一步真的很重要，我之前因為忘了這一步驟導致數據庫無法同步，開啟時間同步後還要進入 `Chroot` 重裝一次系統 `pacman -S linux`
 
 ```zsh
 timedatectl set-ntp true # 開啟時間同步
@@ -135,7 +135,7 @@ timedatectl status # 檢查服務狀態
 
 **我們使用 `cfdisk` 來分割磁區**
 
-Arch WiKi 建議的分區參考
+ArchWiki 建議的分區參考
 
 ![10.png](https://i.loli.net/2019/09/30/dQUhfT6SNIAPq4D.png)
 
@@ -171,13 +171,15 @@ cfdisk /dev/sda # 管理虛擬硬碟磁區
 
 示意圖我就不放了，方式都跟上個步驟大同小異，分別割出 2GB `Type` 為 `Linux Swap` 和 100GB `Type` 為 `Linux home` 的分區。
 
-> 註：有些人的電腦可能不知道沒有我上述講的類型，如果找不到沒有 `Linux root (ARM-64)`、`Linux root (X86)`、`Linux home`，可以將 `Type` 改成 `Linux filesystem`，只是 `EFI System` 與 `Linux swap` 不能這樣搞，而且這兩類型是找得到的。
+> 註：有些人的電腦可能沒有我上述講的類型，如果找不到 `Linux root (ARM-64)`、`Linux root (X86)`、`Linux home`，可以將 `Type` 改成 `Linux filesystem`，只是 `EFI System` 與 `Linux swap` 不能這樣搞，而且這兩類型是找得到的。
 
 ### 9. 格式化磁區
 
 當分區建好後，我們需要對此格式化。每種類型的磁區格式化方式都不相同。
 
 > 註：我們假設你分割出的 40GB 固態硬碟空間磁區代號為 `nvme0n1p5`，`boot` 為 `nvme0n1p1`，2GB `Swap` 為 `sda3` ，100GB `home` 為 `sda4`。
+>
+> 註：`mkfs.ext4` 的創建方式與 `mkfs.fat` 的差別在於前者有創建 `journal` 日誌，後者沒有。注意：文件系統一定要創建日誌，不然個人的資料可能會造成損失等後果。
 
 * 文件系統 `root` 與 `home`
 
@@ -185,8 +187,6 @@ cfdisk /dev/sda # 管理虛擬硬碟磁區
 mkfs.ext4 /dev/nvme0n1p5 #格式化 root
 mkfs.ext4 /dev/sda4 #格式化 home
 ```
-
-> 註：`mkfs.ext4` 的創建方式與 `mkfs.fat` 的差別在於前者有創建 `journal` 日誌，後者沒有。注意：文件系統一定要創建日誌，不然個人的資料可能會造成損失等後果。
 
 * EFI 系統分區 `boot`
 
@@ -250,12 +250,111 @@ vim /etc/pacman.d/mirrorlist # 編輯文件
 
 ```zsh
 ping baidu.com # 確認此時你是連上網的
-pacstrap /mnt base
+pacstrap /mnt base # 安裝基本系統
 ```
 
-如果你是第二次裝 ArchLinuc 的小夥伴，你可能會遇到下載完後安裝時
+如果你是第二次裝 ArchLinux 的小夥伴，你執行以上指令可能會遇到下載完後安裝時，顯示 `/boot/vmlinuz-linux` 已存在，所以無法安裝，這時執行以下指令。
+
+```zsh
+rm /boot/vmlinuz-linux # 刪除該檔案
+pacstrap /mnt base # 安裝基本系統
+```
+
+## 配置系統
+
+### 1. Fastab
+
+執行以下指令生成 `fstab` 文件（用 `-U` 或 `-L` 選項設置 UUID 或卷標）
+
+```zsh
+genfstab -U /mnt >> /mnt/etc/fstab # 生成 fstab 文件
+```
+
+**我個人強烈建議生成完 `fstab` 後使用 `Vim` 查看內容，尤其是重裝 Arch 和重新分配磁區的人一定要查看這份文件。**
+
+> 註：我之前因為將 `/root` 掛載在虛擬硬碟，所以在 Linux 環境下電腦特別卡，在重灌一次後因為沒有重新砍掉 `fstab` 文件生成一次，所以上一次安裝時的設定即使執行生成 `fstab` 文件指令，還是會保留設定無法去除，只是添加了設定，無法覆蓋源設定，造成第二次還是那麼卡。
+
+```zsh
+vim /mnt/etc/fstab # 查看 fstab 文件
+```
+
+請確認這份文件裡只有四份資料（如果有多分割幾個磁區，就可能不是只有四份，你掛載幾個目錄就有幾份資料，不能多不能少）
+
+|           file system           |                    dir                    | type  |   options   | dump                                                         | pass |
+| :-----------------------------: | :---------------------------------------: | :---: | :---------: | :----------------------------------------------------------- | :--: |
+|         /dev/nvme0n1p5          |                     /                     | ext4  | rw,relatime | 0                                                            |  1   |
+|            /dev/sda3            | UUID=bcdb5959-181b-4a68-94e3-f5b79c0a14a8 | /home |    ext4     | rw,relatime                                                  |  0   |
+| /dev/nvme0n1p1 LABEL=SYSTEM_DRV |              UUID=1258-CD76               | /boot |    vfat     | rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro |  0   |
+|            /dev/sda4            | UUID=867cc6ea-05af-4676-b36f-875dd7570a38 | none  |    swap     | defaults                                                     |  0   |
+
+![15.png](https://i.loli.net/2019/09/30/cnKvMBOuLbl7x9Q.png)
+
+如果你的文件有問題且資料混亂執行以下指令。
+
+```zsh
+rm /mnt/etc/fstab # 移除原文件
+genfstab -U /mnt >> /mnt/etc/fstab # 生成 fstab 文件
+```
+
+再次用 `Vim` 確認無誤之後，就可進入下一步
+
+### 2. 進入 Chroot
+
+`Change root` 到新安裝的系統，顧名思義就是進入電腦以安裝好的地址修先級越高。
+
+```zsh
+vim /etc/pacman.d/mirrorlist # 編輯文件
+```
+
+關於 Vim 的編輯指令可參考 [超簡明 Vim 操作介紹](https://gitbook.tw/chapters/command-line/vim-introduction.html)，用起來其實不難。
+
+![13.png](https://i.loli.net/2019/09/30/tj7PcF9vMVKZ3Bh.png)
+
+關於 Vim 移動整行的指令
+
+```vim
+:12, 13 move 6 # 將第 12, 13 行剪貼至第 6 行
+```
+
+像我目前所在的地區為 China，所以我將 China 的鏡像源都移至最開頭。
+
+![14.png](https://i.loli.net/2019/09/30/8jfCaXqbSOEWT5M.png)
+
+編輯好並確認無誤後退出 Vim 編輯器。系統，目前我們所在的地方是 USB，如果沒進入 `Chroot` 就進行安裝和設定就等於裝在你的 USB 上。
+
+> 註：如果重裝系統或是需要重新插上 USB 做些設定設定，像我通常就發生在磁區分割錯誤或目錄掛載錯誤或 Windows 系統更新後引導程序設定檔被砍，需要先將所有的分區先掛載，再進入 `Chroot` 才會顯示你電腦裡的磁區，**再次強調，先掛載 `/mnt`**。
+
+```zsh
+arch-chroot /mnt # 進入 Chroot
+```
+
+### 3. 時區
+
+設置時區，
+
+```zsh
+ln -sf /usr/share/zoneinfo/Region/City /etc/localtime # 設置時區
+```
+
+### 4. 添加本地語系
+
+### 5. 主機名稱與網路
+
+### 6. Initramfs
+
+### 7. 設定 Root (超級使用者) 密碼
+
+## 重啟電腦
 
 
+## Reference
+
+* [Installation guide (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+* [超簡明 Vim 操作介紹 - 為你自己學 Git](https://gitbook.tw/chapters/command-line/vim-introduction.html)
+* [请问vim如何移动当前行向上或向下？不用选中 - V2EX](https://www.v2ex.com/t/49043)
+* [EFI system partition (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/EFI_system_partition_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+* [Network configuration (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+* [Initramfs/指南 - gentoo linux](https://wiki.gentoo.org/wiki/Initramfs/Guide/zh-cn)
 
 
 
