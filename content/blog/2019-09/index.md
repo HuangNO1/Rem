@@ -19,7 +19,9 @@ series: ["Linux"]
 
 我分享一下如何安裝 Arch Linux 的方法，因為我之前裝 Arch Linux 時踩了很多坑，加上我是小白，所以遇到的問題很多，我會在這篇文章中教導各位如何安裝 Arch Linux 在各位的電腦，優雅地使用 Arch Linux 發行版，這篇文章是面向小白向的教學文，這篇只會提及如何安裝，至於初始化與其餘部份會另外寫篇文章。
 
-由於我的電腦型號是**聯想 y7000p**，所以遇到的坑真的很多，我會按特殊情況講解，雖然 [Installation guide - ArchWiki](https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 的安裝指南已經很詳細了，但對於剛接觸的我根本是火星文 :( 
+由於我的電腦型號是**聯想 y7000p**，所以遇到的坑真的很多，我會按特殊情況講解，雖然 [Installation guide - ArchWiki](https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 的安裝指南已經很詳細了，但對於剛接觸的新手根本是火星文 :( 
+
+因為我這是專給小白寫的文章，所以寫了很多細節和注意點，如果你是高手，覺得我寫了很多廢話，那請你忍耐吧，也可以選擇不看我的文章，直接去看 ArchWiki。
 
 ## 安裝前準備
 
@@ -29,7 +31,7 @@ series: ["Linux"]
 
 ### 2. 下載 [Rufus](https://rufus.ie/) - 用來匯入 Archlinux 鏡像至 USB
 
-![2.png](https://i.loli.net/2019/09/29/CwW9MLR5IZkSru4.，png)
+![2.png](https://i.loli.net/2019/09/29/CwW9MLR5IZkSru4.png)
 
 ### 3. 準備一個至少 8G 的 USB
 
@@ -47,7 +49,7 @@ e.g.
 
 在 Windows 工作列的 `win` 圖標上點擊滑鼠右鍵選擇**磁區管理**，將自己的磁區切割，現在大部份的電腦是 110GB 左右的固態 SSD 和 1TB 左右的虛擬硬碟，當然少部份例外，我建議固態硬碟割出至少 40GB 給 `/root` 根目錄（類似 Windows的 C槽），接著可以在虛擬硬碟割出 100GB 以上給 `/home` 家目錄，也有特殊情況，像我的室友他電腦只有固態 SSD 所以只能割固態硬碟給 `/home`，我室友我幫他割了 30GB 給 `/root`，40GB 給 `/home`，2GB 給 `swap`。
 
-> 註：我強烈不建議將 Linux 灌在 **USB** 上或是像**移動固態 SSD** 等移動裝置上，首先在啟動上很不方便，每次都要進入 Bios 調整開機順序，又容易電腦卡頓，電腦容易發燙，加上電源的耗電速度快等因素，其實我就在我室友的移動固態 SSD 上嘗試過，甚至安裝失敗，連圖形界面都進不去。
+> 註：我強烈不建議將 Linux 灌在 **USB** 上或是像**移動固態 SSD** 等移動裝置上，首先在啟動上很不方便，每次都要進入 BIOS 調整開機順序，又容易電腦卡頓，電腦容易發燙，加上電源的耗電速度快等因素，其實我就在我室友的移動固態 SSD 上嘗試過，甚至安裝失敗，連圖形界面都進不去。
 
 磁區管理示意圖：
 
@@ -57,13 +59,13 @@ e.g.
 
 ### 5. USB 使用 UEFI 方式開機
 
-**進入 Bios，調整 Boot 開機順序，改為你的 USB 優先開機，開機模式為 UEFI**
+**進入 BIOS，調整 Boot 開機順序，改為你的 USB 優先開機，主機與 USB 開機模式為 UEFI**
 
-每台電腦進入 Bios 的方法都不同，像我的電腦是聯想 y7000p，所以我在開機時一直按住 `Fn + F2` ，就能進入 Bios 調整開機順序，因為幫室友們裝了 Arch，所以 ThinkPad 是 `F1`，華碩是按 `Esc` 或 `F2`，小米是 `F2`，我記得小米筆電進入 Bios 還需要輸入 Password，有點麻煩就是了。當然還是勸大家上網搜一下自己電腦型號的進入 Bios 快捷建。
+每台電腦進入 BIOS 的方法都不同，像我的電腦是聯想 y7000p，所以我在開機時一直按住 `Fn + F2` ，就能進入 BIOS 調整開機順序，因為幫室友們裝了 Arch，所以 ThinkPad 是 `F1`，華碩是按 `Esc` 或 `F2`，小米是 `F2`，我記得小米筆電進入 BIOS 還需要輸入 Password，有點麻煩就是了。當然還是勸大家上網搜一下自己電腦型號的進入 BIOS 快捷建。
 
-成功進入 USB 後選擇第一個選項 `Boot Arch Linux (X86_64)` 按 `Enter我們的` 進入，當你看到 `root #` 就代表你已經進入 USB 裡的 Arch 安裝鏡像。
+成功進入 USB 後選擇第一個選項 `Boot Arch Linux (X86_64)` 按 `Enter` 進入，當你看到 `root #` 就代表你已經進入 USB 裡的 Arch 安裝鏡像。
 
-> 註：切記要是 UEFI 開機，因為我們最後要在 Bios 安裝引導程序，來引導我們開機選擇進入的 OS。如果沒有使用 UEFi 開機的話會裝不上引導程序 `grub`。
+> 註：切記要是 **UEFI 開機**，因為我們最後要在 BIOS 安裝引導程序，來引導我們開機選擇進入的 OS。如果沒有使用 UEFI 開機的話會裝不上引導程序 `grub`。
 
 ![5.png](https://i.loli.net/2019/09/30/q4zMECx7tpkNLK1.png)
 
@@ -264,13 +266,13 @@ pacstrap /mnt base # 安裝基本系統
 
 ### 1. Fastab
 
-執行以下指令生成 `fstab` 文件（用 `-U` 或 `-L` 選項設置 UUID 或卷標）
+執行以下指令生成 `fstab` 文件（用 `-U` 或 `-L` 選項設置 UUID 或卷標）。
 
 ```zsh
 genfstab -U /mnt >> /mnt/etc/fstab # 生成 fstab 文件
 ```
 
-**我個人強烈建議生成完 `fstab` 後使用 `Vim` 查看內容，尤其是重裝 Arch 和重新分配磁區的人一定要查看這份文件。**
+**我個人強烈建議生成完 `fstab` 後使用 Vim 查看內容，尤其是重裝 Arch 和重新分配磁區的人一定要查看這份文件。**
 
 > 註：我之前因為將 `/root` 掛載在虛擬硬碟，所以在 Linux 環境下電腦特別卡，在重灌一次後因為沒有重新砍掉 `fstab` 文件生成一次，所以上一次安裝時的設定即使執行生成 `fstab` 文件指令，還是會保留設定無法去除，只是添加了設定，無法覆蓋源設定，造成第二次還是那麼卡。
 
@@ -278,7 +280,7 @@ genfstab -U /mnt >> /mnt/etc/fstab # 生成 fstab 文件
 vim /mnt/etc/fstab # 查看 fstab 文件
 ```
 
-請確認這份文件裡只有四份資料（如果有多分割幾個磁區，就可能不是只有四份，你掛載幾個目錄就有幾份資料，不能多不能少）
+請確認這份文件裡只有四份資料（如果有多分割幾個磁區，就可能不是只有四份，你掛載幾個目錄就有幾份資料，不能多不能少）。
 
 |           file system           |                    dir                    | type  | options | dump                                                         | pass |
 | :-----------------------------: | :---------------------------------------: | :---: | :-----: | :----------------------------------------------------------- | :--: |
@@ -296,33 +298,13 @@ rm /mnt/etc/fstab # 移除原文件
 genfstab -U /mnt >> /mnt/etc/fstab # 生成 fstab 文件
 ```
 
-再次用 `Vim` 確認無誤之後，就可進入下一步
+再次用 Vim 確認無誤之後，就可進入下一步。
 
 ### 2. 進入 Chroot
 
-`Change root` 到新安裝的系統，顧名思義就是進入電腦以安裝好的地址修先級越高。
+`Change root` 到新安裝的系統，顧名思義就是進入電腦以安裝好的系統，目前我們所在的地方是 USB，如果沒進入 `Chroot` 就進行安裝和設定就等於安裝和設定在安裝引導程序你的 USB 上。
 
-```zsh
-vim /etc/pacman.d/mirrorlist # 編輯文件
-```
-
-關於 Vim 的編輯指令可參考 [超簡明 Vim 操作介紹](https://gitbook.tw/chapters/command-line/vim-introduction.html)，用起來其實不難。
-
-![13.png](https://i.loli.net/2019/09/30/tj7PcF9vMVKZ3Bh.png)
-
-關於 Vim 移動整行的指令
-
-```vim
-:12, 13 move 6 # 將第 12, 13 行剪貼至第 6 行
-```
-
-像我目前所在的地區為 China，所以我將 China 的鏡像源都移至最開頭。
-
-![14.png](https://i.loli.net/2019/09/30/8jfCaXqbSOEWT5M.png)
-
-編輯好並確認無誤後退出 Vim 編輯器。系統，目前我們所在的地方是 USB，如果沒進入 `Chroot` 就進行安裝和設定就等於裝在你的 USB 上。
-
-> 註：如果重裝系統或是需要重新插上 USB 做些設定設定，像我通常就發生在磁區分割錯誤或目錄掛載錯誤或 Windows 系統更新後引導程序設定檔被砍，需要先將所有的分區先掛載，再進入 `Chroot` 才會顯示你電腦裡的磁區，**再次強調，先掛載 `/mnt`**。
+> 註：如果重裝系統或是需要重新插上 USB 做些設定，像我通常就發生在磁區分割錯誤或目錄掛載錯誤或 Windows 系統更新後引導程序設定檔被砍，需要先將所有的分區先掛載，再進入 `Chroot` 才會顯示你電腦裡的磁區，**再次強調，先掛載 `/mnt`**。
 
 ```zsh
 arch-chroot /mnt # 進入 Chroot
@@ -330,22 +312,185 @@ arch-chroot /mnt # 進入 Chroot
 
 ### 3. 時區
 
-設置時區，
+設置時區，`Region` 為你所在的洲，`City` 為你所在城市。
 
 ```zsh
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime # 設置時區
 ```
 
+我設定的是台北時間。
+
+```zsh
+ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
+```
+
+執行 ` hwclock` 生成 `/etc/adjtime`
+
+```zsh
+hwclock --systohc # 生成 /etc/adjtime
+```
+
+這個指令假定硬件時間已經設置為 `UTF` 時間。
+
 ### 4. 添加本地語系
+
+編輯 `locale.gen` 把自己要用的語言註解去掉，也就是去掉開頭的 `#`，一定要取消註解 `en_US.UTF-8 UTF-8`，建議取消註解**帶 `UTF-8` 的語言**，**把 GBK 和 BIG5 註解去掉可以支援更多字**。
+
+```zsh
+nano /etc/locale.gen # 編輯 locale.gen
+```
+
+以下是我要取消註解的語言，因為我繁體字和簡體字都很常用。
+
+```vim
+en_US.UTF-8 UTF-8
+zh_CN.GB18030 GB18030
+zh_CN.GBK GBK
+zh_TW.EUC-TW EUC-TW
+zh_TW.UTF-8 UTF-8
+​```安裝引導程序
+
+執行 `locale-gen` 生成 `locale` 訊息。
+
+​```zsh
+ locale-gen # 生成 locale 訊息
+```
+
+接著創建 `locale.conf` 檔案並編輯 `LANG` 這一個**語言環境**環境變量為英語 `en_US.UTF-8`，如果你設為中文的話會造成 tty 出現亂碼。
+
+```zsh
+vim /etc/locale.conf # 創建並編輯 locale.conf
+```
+
+修改語言環境。
+
+```vim
+LANG=en_US.UTF-8 # 變量設為英語
+```
 
 ### 5. 主機名稱與網路
 
+創建 `hostname` 文件設置你的主機名稱。
+
+```zsh
+vim /etc/hostname # 創建 hostname 文件
+```
+
+直接在 `hostname` 填入你主機名稱，`myhostname`是你的主機安裝引導程序名。
+
+```vim
+myhostname # 你的主機名稱
+```
+
+添加對應訊息到 `hosts(5)`。
+
+```zsh
+vim /etc/hosts # 編輯 hosts
+```
+
+寫入以下內容，將 `myhostname` 修改成你前面設定的主機名稱。
+
+> 註：如果系統有一個永久的 IP 地址，請使用這個永久的 IP 地址，而不是 `127.0.1.1`。
+> 
+> 像我就沒有設永久 IP，所以直接編輯成以下內容。
+
+```vim
+127.0.0.1	localhost
+::1		localhost
+127.0.1.1	myhostname.localdomain	myhostname
+```
+
 ### 6. Initramfs
+
+創建 `Initramfs`，這是用來將內存盤初始化的腳本，例如開關機時掛載與卸載磁區，現在 `Initramfs`已取代了舊版的 `initrd`。
+
+```zsh
+mkinitcpio -p linux # 創建 Initramfs
+```
+
+如果你想深入了解 `Initramfs`，可以參考 [mkinitcpio (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Mkinitcpio_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)) 和 [Initramfs/指南 - gentoo linux](https://wiki.gentoo.org/wiki/Initramfs/Guide/zh-cn)。
 
 ### 7. 設定 Root (超級使用者) 密碼
 
+設定 `Root` 超級使用者的密碼，**超級使用者**的意思就是這個用戶相當於**系統管理員**，擁有修改系統設定的所有權力。
+
+輸入以下指令後會要求你輸兩次密碼，第二次是確認你的密碼正確，**輸入密碼時文字是隱藏的**，所以不用慌張以為沒有輸入進去。
+
+```zsh
+passwd # 設定密碼
+```
+
+### 8. 安裝引導程序
+
+因為我之前裝的引導程序是 `rEFInd`，但 `rEFInd` 實在太不穩了，好幾次隨著 Windows 更新而設定檔被砍進不了  Linux，需要重裝，然後我朋友推薦給我使用**直接裝在 BIOS 的 `grub`**，穩定不容易被砍，雖然界面比 `rEFInd` 丑了很多，但至少穩定。
+
+`grub` 是引導程序，`os-prober`是可以偵測其他操作系統的軟體包，`efibootmgr`可以操控 UEFI 固件啟動管理器設置的工具。
+
+> 註：請確定你是**以 UEFI 模式開機**，不然會一直報錯 `efi variables are not supported on this system`。這時你就必須重新開機進入 BIOS 調整開機模式再進到 Arch Linux 安裝碟安裝 grub。也請確定你的 **Boot 是掛載在 EFI System 磁區**，不然你無法產生 grub 設定檔。
+
+```zsh
+sudo pacman -Syu # 現在更新一下系統
+sudo pacman -Syy # 同步數據庫
+sudo pacman -S grub os-prober efibootmgr # 下載軟體包
+```
+接著把 `grub` 安裝到 **EFI System 磁區**，將以下指令`--efi-directory` 的 `esp` 改為你的 `grub` 掛載點，我們要將 `grub`  掛載到 `/boot` 上，所以 **`esp` 改為 `/boot`**。
+
+* 指令格式
+
+```zsh
+ grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=grub
+```
+
+* 我的掛載方式
+
+```zsh
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+```
+
+然後**掛載**你的 Windows 磁區，你的固態硬碟 C 槽磁區，沒掛載的話到時候產生設定檔會找不到你的 Windows。
+
+```zsh
+mkdir /mnt/windows # 創建 C 槽目錄
+mount /dev/sdaX1 /mnt/windows # 掛載到目標磁區
+```
+
+當然如果你還想讀取其它 Windows 的磁區，你可以現在順便掛載好，當然後面再掛載也行。
+
+現在我想將我的虛擬硬碟 Wiindows 的 D 槽掛載。
+
+```zsh
+mkdir /mnt/Data # 創建 D 槽目錄
+mount /dev/sdaX2 /mnt/Data # 掛載到目標磁區
+```
+
+然後產生 `grub` 設定檔。
+
+```bash
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+確認設定檔產生無報錯後接著退出 `Chroot`。
+
+```zsh
+exit # 退出 Chroot
+```
+
 ## 重啟電腦
 
+因為我手速不夠快，如果不小心在還沒完全關機或已經開機狀態下拔下 USB，會造成嚴重錯誤，所以我選擇直接關機再手動開機。
+
+```zsh
+reboot # 重開機
+poweroff # 直接關機
+```
+
+關機後立刻將 USB 拔出電腦，然後開機，如果開機沒有進入 grub，重開機一次進入 BIOS 會看到 有 `grub` 的開機選項，將這個選項調到最優先開機就行了。
+
+> 登入時輸入 `user` 為 `root`，`password` 為你之前設的 Root 密碼。
+
+## 安裝後工作
+
+我會之後會寫 **Arch Linux 初使化**文章，並將連結放此。
 
 ## Reference
 
@@ -354,9 +499,10 @@ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime # 設置時區
 * [请问vim如何移动当前行向上或向下？不用选中 - V2EX](https://www.v2ex.com/t/49043)
 * [EFI system partition (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/EFI_system_partition_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 * [Network configuration (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+* [mkinitcpio (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Mkinitcpio_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 * [Initramfs/指南 - gentoo linux](https://wiki.gentoo.org/wiki/Initramfs/Guide/zh-cn)
-
-
+* [Localization/Simplified Chinese (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Localization/Simplified_Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+* [Unified Extensible Firmware Interface (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+* [GRUB (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/GRUB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E7%94%9F%E6%88%90_grub.cfg)
 
 ##### &copy;copyright by Huang Po-Hsun
-
