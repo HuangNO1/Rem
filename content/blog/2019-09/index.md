@@ -348,11 +348,11 @@ zh_CN.GB18030 GB18030
 zh_CN.GBK GBK
 zh_TW.EUC-TW EUC-TW
 zh_TW.UTF-8 UTF-8
-​```
+```
 
 執行 `locale-gen` 生成 `locale` 訊息。
 
-​```zsh
+```zsh
  locale-gen # 生成 locale 訊息
 ```
 
