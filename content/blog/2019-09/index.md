@@ -302,7 +302,7 @@ genfstab -U /mnt >> /mnt/etc/fstab # 生成 fstab 文件
 
 ### 2. 進入 Chroot
 
-`Change root` 到新安裝的系統，顧名思義就是進入電腦以安裝好的系統，目前我們所在的地方是 USB，如果沒進入 `Chroot` 就進行安裝和設定就等於安裝和設定在安裝引導程序你的 USB 上。
+`Change root` 到新安裝的系統，顧名思義就是進入電腦以安裝好的系統，目前我們所在的地方是 USB，如果沒進入 `Chroot` 就進行安裝和設定就等於安裝和設定在你的 USB 上。
 
 > 註：如果重裝系統或是需要重新插上 USB 做些設定，像我通常就發生在磁區分割錯誤或目錄掛載錯誤或 Windows 系統更新後引導程序設定檔被砍，需要先將所有的分區先掛載，再進入 `Chroot` 才會顯示你電腦裡的磁區，**再次強調，先掛載 `/mnt`**。
 
@@ -324,7 +324,7 @@ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime # 設置時區
 ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 ```
 
-執行 ` hwclock` 生成 `/etc/adjtime`
+執行 ` hwclock` 生成 `/etc/adjtime`。
 
 ```zsh
 hwclock --systohc # 生成 /etc/adjtime
@@ -348,7 +348,7 @@ zh_CN.GB18030 GB18030
 zh_CN.GBK GBK
 zh_TW.EUC-TW EUC-TW
 zh_TW.UTF-8 UTF-8
-​```安裝引導程序
+​```
 
 執行 `locale-gen` 生成 `locale` 訊息。
 
@@ -376,7 +376,7 @@ LANG=en_US.UTF-8 # 變量設為英語
 vim /etc/hostname # 創建 hostname 文件
 ```
 
-直接在 `hostname` 填入你主機名稱，`myhostname`是你的主機安裝引導程序名。
+直接在 `hostname` 填入你主機名稱，`myhostname`是你的主機名。
 
 ```vim
 myhostname # 你的主機名稱
@@ -426,7 +426,7 @@ passwd # 設定密碼
 
 `grub` 是引導程序，`os-prober`是可以偵測其他操作系統的軟體包，`efibootmgr`可以操控 UEFI 固件啟動管理器設置的工具。
 
-> 註：請確定你是**以 UEFI 模式開機**，不然會一直報錯 `efi variables are not supported on this system`。這時你就必須重新開機進入 BIOS 調整開機模式再進到 Arch Linux 安裝碟安裝 grub。也請確定你的 **Boot 是掛載在 EFI System 磁區**，不然你無法產生 grub 設定檔。
+> 註：請確定你是**以 UEFI 模式開機**，不然會一直報錯 `efi variables are not supported on this system`。這時你就必須重新開機進入 BIOS 調整開機模式再進到 Arch Linux 安裝碟安裝 grub。也請確定你的 **Boot 是掛載在 EFI System 磁區**，不然你無法產生 grub 設定檔，原因在於我們是要掛載在 Boot，但因為 Boot 沒掛載到 EFI 磁區，所以在 EFI 磁區找不到 Boot，產生路徑錯誤。
 
 ```zsh
 sudo pacman -Syu # 現在更新一下系統
