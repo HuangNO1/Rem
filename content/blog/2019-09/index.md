@@ -282,12 +282,7 @@ vim /mnt/etc/fstab # 查看 fstab 文件
 
 請確認這份文件裡只有四份資料（如果有多分割幾個磁區，就可能不是只有四份，你掛載幾個目錄就有幾份資料，不能多不能少）。
 
-|           file system           |                    dir                    | type  | options | dump                                                         | pass |
-| :-----------------------------: | :---------------------------------------: | :---: | :-----: | :----------------------------------------------------------- | :--: |
-|         /dev/nvme0n1p5          | UUID=a48c597a-d1f2-4f4a-82f8-ba96114912f1 |   /   |  ext4   | rw,relatime                                                  | 0 1  |
-|            /dev/sda3            | UUID=bcdb5959-181b-4a68-94e3-f5b79c0a14a8 | /home |  ext4   | rw,relatime                                                  | 0 2  |
-| /dev/nvme0n1p1 LABEL=SYSTEM_DRV |              UUID=1258-CD76               | /boot |  vfat   | rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro | 0 2  |
-|            /dev/sda4            | UUID=867cc6ea-05af-4676-b36f-875dd7570a38 | none  |  swap   | defaults                                                     | 0 0  |
+![table.png](https://i.loli.net/2019/10/01/S9YdZyhaDmctb1R.png)
 
 ![15.png](https://i.loli.net/2019/09/30/cnKvMBOuLbl7x9Q.png)
 
