@@ -8,6 +8,9 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
   
   {{ template "_internal/opengraph.html" . }}
+  {{ if not .Site.IsServer }}
+  {{ template "_internal/google_analytics_async.html" . }}
+  {{ end }}
 
   <title>
   {{ if eq .Kind "home" }}
