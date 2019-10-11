@@ -9,7 +9,7 @@ tags: ["ArchLinux", "Linux"]
 categories: ["ArchLinux"]
 author: "Huang Po-Hsun"
 toc: true
-series: ["linux"]
+series: ["Linux"]
 ---
 2019/09/28 edited by Huang Po-Hsun
 

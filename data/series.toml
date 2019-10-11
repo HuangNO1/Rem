@@ -1,9 +1,9 @@
 [[series]]
-name = "linux"
-img = "static/images/series/Linux/Linux.png"
+name = "Linux"
+img = "images/series/Linux/Linux.png"
 summary = "Technical articles related to linux."
 
 [[series]]
-name = "c/c++"
-img = "static/images/series/C_C++/C++&C.png"
+name = "C/C++"
+img = "images/series/C_C++/C++&C.png"
 summary = "Technical articles related to C/C++."

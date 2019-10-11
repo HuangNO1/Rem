@@ -9,7 +9,7 @@ tags: ["ArchLinux", "Vscode"]
 categories: ["ArchLinux"]
 author: "Huang Po-Hsun"
 toc: true
-series: ["linux"]
+series: ["Linux"]
 ---
 <!-- 在 Archlinux 搭建 VScode C/C++ 開發環境（GCC）及 調試（GDB）
 === -->
