@@ -3,9 +3,9 @@
 [[series]]
 name = "linux"
 img = "images/series/Linux/Linux.png"
-summary = "This is the place I write reviews"
+summary = "Here is a series of articles about linux"
 
 [[series]]
 name = "c/c++"
 img = "images/series/C_C++/C++&C.png"
-summary = "How I build up my personal website"
+summary = "Here is a series of articles about C and C++"
