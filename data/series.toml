@@ -1,4 +1,9 @@
 [[series]]
 name = "Linux"
-img = "images/blog/2019-04/Linux.jpg"
+img = "images/series/Linux/Linux.png"
 summary = "Technical articles related to linux."
+
+[[series]]
+name = "C/C++"
+img = "images/series/C_C++/C++&C.png"
+summary = "Technical articles related to C/C++."

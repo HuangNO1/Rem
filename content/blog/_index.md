@@ -6,3 +6,4 @@ title = "Blog"
 +++
 
 `Blog` is the place to record my life. 
+
