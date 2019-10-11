@@ -10,6 +10,7 @@ categories: ["ArchLinux"]
 author: "Huang Po-Hsun"
 toc: true
 series: ["c/c++"]
+img : "images/blog/2019-10/Positional-Numeral-Systems-Conversion.png"
 ---
 2019/10/11 edited by Huang Po-Hsun 
 
