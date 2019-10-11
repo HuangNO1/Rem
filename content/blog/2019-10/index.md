@@ -9,7 +9,7 @@ tags: ["C++", "演算法"]
 categories: ["ArchLinux"]
 author: "Huang Po-Hsun"
 toc: true
-series: ["C/C++"]
+series: ["c/c++"]
 ---
 2019/10/11 edited by Huang Po-Hsun 
 

@@ -44,7 +44,6 @@ pygmentsuseclasses         = true
     identifier             = "about"
     url                    = "about/"  
 
- 
 
 [params]
   faviconfile              = "img/zheng.png"               # from static/
