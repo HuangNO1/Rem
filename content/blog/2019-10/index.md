@@ -6,7 +6,7 @@ weight: 70
 keywords: ["C++", "小數", "進制", "演算法"]
 description: "第三篇文章"
 tags: ["C++", "演算法"]
-categories: ["ArchLinux"]
+categories: ["C/C++"]
 author: "Huang Po-Hsun"
 toc: true
 series: ["c/c++"]
