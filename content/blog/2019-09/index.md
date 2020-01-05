@@ -1,5 +1,5 @@
 ---
-title: "Archlinux 安裝 - Windows & Archlinux 雙系統"
+title: "Archlinux 安裝 Part 1 - Windows & Archlinux 雙系統"
 date: 2019-09-28T15:24:28+08:00
 draft: false
 weight: 70
@@ -253,15 +253,17 @@ vim /etc/pacman.d/mirrorlist # 編輯文件
 
 ```zsh
 ping baidu.com # 確認此時你是連上網的
-pacstrap /mnt base # 安裝基本系統
+pacstrap /mnt base linux linux-firmware # 安裝基本系統
 ```
 
 如果你是第二次裝 ArchLinux 的小夥伴，你執行以上指令可能會遇到下載完後安裝時，顯示 `/boot/vmlinuz-linux` 已存在，所以無法安裝，這時執行以下指令。
 
 ```zsh
 rm /boot/vmlinuz-linux # 刪除該檔案
-pacstrap /mnt base # 安裝基本系統
+pacstrap /mnt base linux linux-firmware # 安裝基本系統
 ```
+
+> 註：pacstrap 的安裝指令我在 2020/01/04 更新，因為幫同學重灌 ArchLinux 時發現指令變了，目前最新本的 ArchLinux 發行版指令是 `pacstrap /mnt base linux linux-firmware`。
 
 ## 配置系統
 
@@ -471,6 +473,26 @@ grub-mkconfig -o /boot/grub/grub.cfg
 exit # 退出 Chroot
 ```
 
+## 重要補充
+
+### 連網
+
+因為拔掉 USB 重啟電腦後，會發現關於**連網功能不好處理**，使用 `ip link` 後 `dhcpcd` 過於繁瑣，建議就在這裡就安裝連網的管理器。
+
+> 註：注意使用 `systemctl` 啟用 **networkmanager** 服務時要注意大小寫，開頭要大寫。
+
+```zsh
+arch-chroot /mnt # 進入 Chroot
+pacman -S networkmanager # 安裝 networkmanager
+systemctl enable NetworkManager # 設定開機自啟
+systemctl strat NetworkManager # 啟用 Netmanager
+exit # 退出 Chroot
+```
+
+### 不裝雙系統，只有 Linux
+
+如果你是將所有電腦裡的系統都砍了只裝 Archlinux，你**一樣要裝引導**，像之前我幫一個朋友裝 ArchLinux 時他將自己電腦上的 **Windows 全砍了**，剩下所有空間都給 Linux。
+
 ## 重啟電腦
 
 因為我手速不夠快，如果不小心在還沒完全關機或已經開機狀態下拔下 USB，會造成嚴重錯誤，所以我選擇直接關機再手動開機。
@@ -486,7 +508,7 @@ poweroff # 直接關機
 
 ## 安裝後工作
 
-我會之後會寫 **Arch Linux 初使化**文章，並將連結放此。
+我會之後會寫 **Arch Linux 安裝後**文章，並放入 Blog。
 
 ## Reference
 
