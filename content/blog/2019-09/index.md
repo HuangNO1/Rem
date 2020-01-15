@@ -249,7 +249,7 @@ vim /etc/pacman.d/mirrorlist # 編輯文件
 
 使用 `pacstrap` 腳本安裝 `base` 組：
 
-> 註：在這裡請勿必確認你的 `/boot` 是掛載在 `EFI Syetem` 分區上，不然後面需要進入 `Chroot` 執行 `pacman -S linux` 重裝系統。
+> 註：在這裡請務必確認你的 `/boot` 是掛載在 `EFI Syetem` 分區上，不然後面需要進入 `Chroot` 執行 `pacman -S linux` 重裝系統。
 
 ```zsh
 ping baidu.com # 確認此時你是連上網的

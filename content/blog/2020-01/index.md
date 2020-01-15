@@ -314,6 +314,29 @@ pacman -S ntfs-3g
 pacman -S konsole
 ```
 
+## 重要補充 - 聯想 Y7000 的連網問題
+
+聯想筆電通常在連無線網路上有一個坑 - **Networkmanager 無法啟用無線網卡**，算是...聯想筆電的特色，這裡我感謝 Telegram [#archlinux-cn](https://t.me/archlinuxcn_group) 群中的 **@Asterism** 大佬幫助我解決問題。
+
+許多筆記本電腦都有一個硬體按鈕（或開關）來關閉無線網卡，但是，網卡也可能被內核阻止。 可以由 **Rfkill** 處理。通常來說你需要**禁用 ideapod_laptop**。
+
+先輸入 `rfkill list` 查看關於筆電的硬件開關。
+
+> [關於 Rfkill](https://wiki.archlinux.org/index.php/Network_configuration/Wireless#Rfkill_caveat)
+
+![03.png](https://i.loli.net/2020/01/15/WLsrNmj6I41ZGyf.png)
+
+這張圖片是我已經處理過的狀態，關於 **Wireless LAN** 的軟體與硬體禁止皆為 NO，但如果是還沒處理之前我的 **Soft blocked**（軟卡禁止）為 `no`、**Hard blocked**（硬卡禁止）為 `yes`。
+
+> 註：`modprobe` 是內核模塊，想了解更多可以參考 [Kernel module (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Kernel_module_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+
+```zsh
+sudo modprobe -r ideapad_laptop # 禁用 ideapod_laptop
+sudo tee /etc/modprobe.d/ideapad.conf <<< "blacklist ideapad_laptop" # 永久生效
+```
+
+接著再次輸入 `rfkill list` 查看狀態，如果發現 `Wireless LAN` 的 `Soft blocked` 和 `Hard blocked` 都是 `no`就行了，無線網路也能連結了。
+
 ## Reference
 
 * [General recommendations (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/General_recommendations_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -327,3 +350,5 @@ pacman -S konsole
 * [Fcitx (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 * [NTFS-3G (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/NTFS-3G_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 * [gnome_vs_kde](https://www.slant.co/versus/12539/12540/~gnome_vs_kde)
+* [Redirect to:Network configuration/Wireless#Rfkill caveat - ArchWiki](https://wiki.archlinux.org/index.php/Network_configuration/Wireless#Rfkill_caveat)
+* [Kernel module (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Kernel_module_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))

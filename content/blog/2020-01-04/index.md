@@ -139,6 +139,12 @@ flameshot gui # 截圖
 flameshot gui -d 3000 # 延時 3 秒截圖
 ```
 
+**Spectacle** 也是不錯的截圖工具，但是功能上沒 **flameshot** 那麼完備。
+
+```zsh
+sudo pacman -S spectacle
+```
+
 ### 圖片檢視器
 
 ```zsh
