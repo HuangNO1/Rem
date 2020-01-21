@@ -9,3 +9,8 @@ summary = "Here is a series of articles about linux"
 name = "c/c++"
 img = "images/series/C_C++/C++&C.png"
 summary = "Here is a series of articles about C and C++"
+
+[[series]]
+name = "電影賞析"
+img = "images/series/MovieExperience/moive.jpg"
+summary = "Here is a series of articles about my experience of the movie which I have watched."
