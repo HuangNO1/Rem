@@ -40,7 +40,19 @@ img : "images/blog/2019-09/archlinux.png"
 
 > 註：在此只需修改您的目標 USB 和鏡像源即可，按下開始鍵進行匯入。
 
+#### 關於燒錄方式
+
+> 2020/01/21 補充燒錄方式。
+
+我幫家裡已經十年的 HP CQ40 重裝系統，因為過於老舊，電腦沒有 UEFI，只有 Legacy，所以開機無法以 UEFI 開機，這時關於燒錄鏡像的方式就需要做調整。
+
+如果你的 Bios 有 UEFI 就使用 **GPT 燒錄**，如果是像我上面一樣，電腦過於老舊，當時的年代只有 Lengcy，這時你需要使用已經淘汰的 **MBR 燒錄鏡像**，然後建議使用 dd 燒錄。至於怎麼看自己電腦有沒有 UEFI，只需要查看自己的 Bios 是否有開機模式選項並且有 UEFI 選項。
+
+現在大部份的電腦都有 UEFI，所以正常選擇 **GPT** 就好。
+
 e.g.
+
+MBR 燒錄。
 
 ![3.png](https://i.loli.net/2019/09/29/jR5FbkuUCPIMvXh.png)
 
@@ -66,7 +78,9 @@ e.g.
 
 成功進入 USB 後選擇第一個選項 `Boot Arch Linux (X86_64)` 按 `Enter` 進入，當你看到 `root #` 就代表你已經進入 USB 裡的 Arch 安裝鏡像。
 
-> 註：切記要是 **UEFI 開機**，因為我們最後要在 BIOS 安裝引導程序，來引導我們開機選擇進入的 OS。如果沒有使用 UEFI 開機的話會裝不上引導程序 `grub`。
+> 註：切記要是 UEFI 開機，因為我們最後要在 BIOS 安裝引導程序，來引導我們開機選擇進入的 OS。如果沒有使用 UEFI 開機的話會裝不上引導程序 `grub`。
+
+> 當然如果你的電腦沒辦法使用 UEFI，並且前面的燒錄方式使用的是 **MBR**，在後面分割磁區時就需要用不同的方式，然後 GRUB 引導也是不同的指令。
 
 ![5.png](https://i.loli.net/2019/09/30/q4zMECx7tpkNLK1.png)
 
@@ -142,7 +156,7 @@ ArchWiki 建議的分區參考
 
 ![10.png](https://i.loli.net/2019/09/30/dQUhfT6SNIAPq4D.png)
 
-我們已經在 Windows 分割好了我們的磁區。
+我們已經在 Windows 分割好了我們的磁區。我們使用的是 **GPT** 的方案。
 
 ```zsh
 lsblk # 檢查磁區狀態
@@ -474,6 +488,14 @@ exit # 退出 Chroot
 ```
 
 ## 重要補充
+
+### MBR 的 GRUB 引導指令
+
+> sdX 為 /root 的磁區。
+
+```zsh
+grub-install --target=i386-pc /dev/sdX
+```
 
 ### 連網
 
