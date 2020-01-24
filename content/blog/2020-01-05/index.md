@@ -120,7 +120,7 @@ ZSH_THEME="ys"
 
 ## 推薦插件
 
-插件依然需要打開 `~/.zshrc` ，找到 `plugins=`，然後在裡面寫需要的插件名，有些插件可能還需要安裝。
+插件依然需要編輯 `~/.zshrc` ，找到 `plugins=`，然後在裡面寫需要的插件名，有些插件可能還需要安裝。
 
 > 注意：只要改了此文件，重啟終端后有效或使用 `source ~/.zshrc` 更新配置。
 
@@ -128,7 +128,7 @@ ZSH_THEME="ys"
 
 用來解壓縮文件，用起來很爽，根本不需要去記憶各種解壓縮指令，一套 `x filmname` 直接幫你解壓好。
 
-當然，如果你想要用tar命令，可以使用tar -加tab鍵，zsh會列出參數的含義。
+當然，如果你想要用 `tar` 命令，可以使用 `tar -` 加 `tab` 鍵，zsh 會列出參數的含義。
 
 這插件預設安裝就有，不需要額外安裝。
 
@@ -138,7 +138,7 @@ plugins=(其他的插件 extract)
 
 ### zsh-autosuggestion
 
-自動補全。可記錄之前輸過得指令。
+自動補全。可記錄之前輸過的指令。
 
 ```zsh
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -187,7 +187,7 @@ brew install bat
 
 可以說 `incr.zsh` 這插件是最強的自動補全插件，還能幫你搜索線上的倉庫是否有你所需要的軟體包。建議搭配 `zsh-autosuggestion` 一起使用，我將這兩個插件都裝了。
 
-到[這個網站](http://mimosa-pudica.net/src/incr-0.2.zsh)下載 `incr.zsh` 文件，將此文件放置 `~/.oh-my-zsh/custom/plugins/incr/incr*.zsh` 資料夾裡，如果沒有資料夾就自己新增。
+到[這個網站](http://mimosa-pudica.net/src/incr-0.2.zsh)下載 `incr.zsh` 文件，將此文件放置 `~/.oh-my-zsh/custom/plugins/incr` 資料夾裡，如果沒有資料夾就自己新增。
 
 在 `~/.zshrc` 文末添加一行。
 
