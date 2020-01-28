@@ -1,6 +1,6 @@
 ---
 title: "在 Linux 上控制 Python 版本 - pyenv"
-date: 2020-01-17T15:26:28+08:00
+date: 2020-01-27T15:26:28+08:00
 draft: false
 weight: 70
 keywords: ["ArchLinux", "Linux", "Python", "pyenv"]
