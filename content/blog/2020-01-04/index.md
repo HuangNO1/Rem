@@ -231,7 +231,7 @@ sudo pacman -S java-environment-common # JDK
 貌似需要使用 `yay` 直接從 AUR 下載安裝，`pacman` 庫沒有。其實我覺得 Python 直接用 VScode 寫就好了，但有些人不習慣，所以在這裡列出 Pycharm。
 
 ```zsh
-yay -S pycharm-community-edition # 設區版
+yay -S pycharm-community-edition # 社區版
 yay -S pycharm-professional # 專業版
 ```
 
@@ -334,7 +334,7 @@ wget -O config.yml "xxxxxxxxxxxxxxx"
 
 接著修改 `config.yml` 的 `socks-port` 代理端口為 **1080**。
 
-接下來需要新的的文件是 `Country.mmdb`，這份文件已經被牆國牆了，所以需要手動到網上下載。我姑且將該份文件上傳到[百度網盤](https://pan.baidu.com/s/1zFvABeJvcBa_FIfpQT9S7A)，密碼是 **vsor**，希望別被砍掉。
+接下來需要新的的文件是 `Country.mmdb`，這份文件已經被牆國牆了，所以需要手動到網上下載。我姑且將該份文件上傳到[百度網盤](https://pan.baidu.com/s/1zFvABeJvcBa_FIfpQT9S7A)，密碼是 **vsor**，希望別被砍掉。如果被砍掉了，我又在 [Github](https://github.com/HuangNO1/Clash_Country.mmdb) 上傳該份文件。
 
 將 `Country.mmdb` 放入 `~/.config/clash`。如果需要看到隱藏的資料夾可以在檔案管理器檢視的地方選擇顯示隱藏檔案或資料夾。。
 
@@ -386,6 +386,18 @@ sudo pacman -S mojave-gtk-theme-git
 ```zsh
 yay -S numix-circle-icon-theme-git
 yay -S papirus-icon-theme-git
+```
+
+### SDDM
+
+> 2020 /  01 / 02 補充
+
+我在這裡推薦使用 [Suger Candy for SDDM](https://store.kde.org/p/1312658)，幸好也有人放上了 AUR。
+
+官方文檔也在設置檔案的參數說明得很清楚，我就不再這多贅述了。
+
+```zsh
+sudo pacman -S sddm-theme-sugar-candy-git
 ```
 
 ### 窗口特效
