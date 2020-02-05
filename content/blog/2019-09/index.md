@@ -200,6 +200,8 @@ cfdisk /dev/sda # 管理虛擬硬碟磁區
 
 * 文件系統 `root` 與 `home`
 
+> 關於文件系統可以建議裝 `xfs` 或是 `btrfs`。我會在後面的**重要補充**的地方說明。
+
 ```zsh
 mkfs.ext4 /dev/nvme0n1p5 #格式化 root
 mkfs.ext4 /dev/sda4 #格式化 home
@@ -497,6 +499,101 @@ exit # 退出 Chroot
 grub-install --target=i386-pc /dev/sdX
 ```
 
+### 雙 Arch 系統
+
+> 2020 / 02 / 05 補充
+
+我想有些人會為了腦熱或好奇心而裝三系統，像我室友是 Windows + 兩個 Arch，這時引導 `grub` 的設置就顯得重要。
+
+在做這三系統時，你必須確保你兩個 Arch 的系統不是共用一個 **/boot**，然後你只需要在其中一個 Arch 系統中設置安裝 GRUB。
+
+你在其中一個 Arch 系統中執行完上述的步驟產生出 `grub.cfg` 設定檔後，我們開始我們設定我們的 GRUB 設定檔。
+
+1. 查看 UUID
+
+你需要將你另一個 Arch 系統 **/root** 和 **/boot** 的  UUID 記住。像我的 `root` 的 UUID 是 `a48c597a-d1f2-4f4a-82f8-ba96114912f1`、`boot` 的 UUID 是 `1258-CD76`。
+
+```zsh
+lsblk -f # 檢查各磁區 UUID
+# 以下是輸出結果
+NAME        FSTYPE FSVER LABEL      UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+sda                                                                                     
+├─sda1                                                                                  
+├─sda2      ntfs         DATA       FEBCDBDCBCDB8D91                                    
+├─sda3      ext4   1.0              bcdb5959-181b-4a68-94e3-f5b79c0a14a8   55.1G    37% /home
+└─sda4      swap   1                867cc6ea-05af-4676-b36f-875dd7570a38                [SWAP]
+nvme0n1                                                                                 
+├─nvme0n1p1 vfat   FAT32 SYSTEM_DRV 1258-CD76                             164.3M    36% /boot
+├─nvme0n1p2                                                                             
+├─nvme0n1p3 ntfs         Windows    46DA5983DA597063                                    
+├─nvme0n1p4 ntfs                    F4B6F775B6F73728                                    
+└─nvme0n1p5 ext4   1.0              a48c597a-d1f2-4f4a-82f8-ba96114912f1    2.3G    87% /
+
+```
+
+2. 編輯 GRUB 設定檔
+
+紀錄後，就編輯 `/boot/grub/grub.cfg`。
+
+```zsh
+vim /boot/grub/grub.cfg
+```
+
+加上以下內容，並將下面所有的 `rootUUID` 和 `bootUUID` 分別改成你另一個 Arch 系統的 **/root** 和 **/boot** 的  UUID。至於開頭的 `Arch Linux` 可改成自己想取的名字。`Advanced options for Arch Linux` 也改成你自己想取的名字。
+
+```zsh
+menuentry 'Arch Linux' --class arch --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-rootUUID' {
+	load_video
+	set gfxpayload=keep
+	insmod gzio
+	insmod part_gpt
+	insmod fat
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root bootUUID
+	else
+	  search --no-floppy --fs-uuid --set=root bootUUID
+	fi
+	echo	'Loading Linux linux ...'
+	linux	/vmlinuz-linux root=UUID=rootUUID rw  loglevel=3 quiet
+	echo	'Loading initial ramdisk ...'
+	initrd	/initramfs-linux.img
+}
+submenu 'Advanced options for Arch Linux' $menuentry_id_option 'gnulinux-advanced-rootUUID' {
+	menuentry 'Arch Linux, with Linux linux' --class arch --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-linux-advanced-rootUUID' {
+		load_video
+		set gfxpayload=keep
+		insmod gzio
+		insmod part_gpt
+		insmod fat
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root bootUUID
+		else
+		  search --no-floppy --fs-uuid --set=root bootUUID
+		fi
+		echo	'Loading Linux linux ...'
+		linux	/vmlinuz-linux root=UUID=rootUUID rw  loglevel=3 quiet
+		echo	'Loading initial ramdisk ...'
+		initrd	/initramfs-linux.img
+	}
+	menuentry 'Arch Linux, with Linux linux (fallback initramfs)' --class arch --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-linux-fallback-rootUUID' {
+		load_video
+		set gfxpayload=keep
+		insmod gzio
+		insmod part_gpt
+		insmod fat
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root bootUUID
+		else
+		  search --no-floppy --fs-uuid --set=root bootUUID
+		fi
+		echo	'Loading Linux linux ...'
+		linux	/vmlinuz-linux root=UUID=rootUUID rw  loglevel=3 quiet
+		echo	'Loading initial ramdisk ...'
+		initrd	/initramfs-linux-fallback.img
+	}
+}
+```
+
 ### 連網
 
 因為拔掉 USB 重啟電腦後，會發現關於**連網功能不好處理**，使用 `ip link` 後 `dhcpcd` 過於繁瑣，建議就在這裡就安裝連網的管理器。
@@ -514,6 +611,45 @@ exit # 退出 Chroot
 ### 不裝雙系統，只有 Linux
 
 如果你是將所有電腦裡的系統都砍了只裝 Archlinux，你**一樣要裝引導**，像之前我幫一個朋友裝 ArchLinux 時他將自己電腦上的 **Windows 全砍了**，剩下所有空間都給 Linux。
+
+## 文件系統 XFS 與 Btrfs
+
+> 2020 / 02 / 05 補充文件系統 `XFS` 和 `Btrfs`。
+
+因為我文件系統使用 `ext4` 使用 `ntfs-3g` 寫入時非常慢，甚至卡頓，我在這裡推薦使用 `XFS` 或是 `Btrfs`。但是 `Btrfs` 還不夠穩定，所以我這裡是推薦 `XFS`。
+
+- `XFS` 是一種高性能的日誌文件系統，`XFS` 特別擅長處理大文件，同時提供**平滑的數據傳輸**。當前 CentOS 7 也將 `XFS` + `LVM` 作為默認的文件系統。
+- `Btrfs` 是一種用於 Linux 的新的寫時複製文件系統，旨在實現高級功能，同時專注於容錯、修復和輕鬆的管理。
+
+### XFS
+
+```zsh
+mkfs.xfs /dev/nvme0n1p5 #格式化 root
+mkfs.xfs /dev/sda4 #格式化 home
+```
+
+在安裝 `base` 時要輸入以下內容，將 `xfsprogs` 包加入：
+
+```zsh
+pacstrap /mnt base linux linux-firmware xfsprogs
+```
+
+更多請參考 [XFS (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/XFS_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))。
+
+### Btrfs
+
+```zsh
+mkfs.btrfs -L /dev/nvme0n1p5 #格式化 root
+mkfs.btrfs -L /dev/sda4 #格式化 home
+```
+
+在安裝 `base` 時要輸入以下內容，將 `btrfs-progs` 包加入：
+
+```zsh
+pacstrap /mnt base linux linux-firmware btrfs-progs
+```
+
+更多請參考 [Btrfs (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Btrfs_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))。
 
 ## 重啟電腦
 
@@ -544,5 +680,8 @@ poweroff # 直接關機
 * [Localization/Simplified Chinese (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Localization/Simplified_Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 * [Unified Extensible Firmware Interface (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 * [GRUB (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/GRUB_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E7%94%9F%E6%88%90_grub.cfg)
+* [Linux文件系統格式有哪些類型？選錯你就要辭職了 - 今日頭條](https://twgreatdaily.com/JtHjy2wBJleJMoPMKqfZ.html)
+* [XFS (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/XFS_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+* [Btrfs (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Btrfs_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 ##### &copy;copyright by Huang Po-Hsun
