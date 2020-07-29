@@ -178,9 +178,10 @@ plugins=(其他的插件 extract)
 `cat` 某個文件，可以在終端直接輸出文件內容，`bat` 相比 `cat` 增加了行號和顏色高亮。
 
 > P.S. 我好像不怎麼用這個。所以沒裝。
+> 2020/07/29 更新：bat 實在是太好看了，大推。
 
 ```zsh
-brew install bat
+sudo pacman -S bat
 ```
 
 ### incr

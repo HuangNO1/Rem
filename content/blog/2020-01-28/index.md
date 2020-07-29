@@ -136,7 +136,7 @@ export PATH=${PATH}:${MAVEN_HOME}/bin
 ./startup.sh
 ```
 
-![tomcat_startup.png](https://i.loli.net/2020/01/28/YwL2nNIMixeo5l9.png)
+![tomcat_startup.png](https://imgpoi.com/i/KL8KL9.png)
 
 接著打開瀏覽器輸入 `http://127.0.0.1:8080/`或`http://localhost:8080/` 會出現以下畫面，此時代表已經配置成功。
 
@@ -144,13 +144,13 @@ export PATH=${PATH}:${MAVEN_HOME}/bin
 
 接下來輸入 `./shutdown.sh` 中止 Tomcat。
 
-![tomcat_shutdown.png](https://i.loli.net/2020/01/28/rPcDbAYzn3Rv7pm.png)
+![tomcat_shutdown.png](https://imgpoi.com/i/KL8N95.png)
 
 ### Maven
 
 在 Konsole 輸入 `mvn -v` 就會顯示你的 Maven 版本。
 
-![maven_version.png](https://i.loli.net/2020/01/28/WHLCg7fzaKIsAuO.png)
+![maven_version.png](https://imgpoi.com/i/KL8LTM.png)
 
 ## IntelliJ IDEA 透過國內阿里云鏡像加速建立 Maven 項目
 
@@ -179,7 +179,7 @@ IntelliJ IDEA 創建 Maven 項目，如果是一般的 Maven 項目就在 `Creat
 
 **項目目錄位置**
 
-![IDEA_maven_location.png](https://i.loli.net/2020/01/28/YWh8kjnf7GTHDLu.png)
+![IDEA_maven_location.png](https://imgpoi.com/i/KL8F32.png)
 
 **添加屬性**
 

@@ -84,7 +84,7 @@ touch PKGBUILD # 新增 PKGBUILG
 
 在 `/usr/share/pacman/` 裡面有三份模板：
 
-![1.png](https://i.loli.net/2020/02/01/BczgQf2ps5bw9il.png)
+![1.png](https://imgpoi.com/i/KL8JDD.png)
 
 - `PKGBUILD.proto`: 經典原型。
 - `PKGBUILD-split.proto`: 分包原型。

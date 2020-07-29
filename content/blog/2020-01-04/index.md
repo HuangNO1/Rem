@@ -10,7 +10,7 @@ categories: ["ArchLinux"]
 author: "Huang Po-Hsun"
 toc: true
 series: ["linux"]
-img : "images/blog/2020-01/Desktop.png"
+img : "images/blog/2020-01/newDesktop.png"
 ---
 2020/01/05 edited by Huang Po-Hsun
 
@@ -114,7 +114,7 @@ sudo pacman -S dolphin
 MPV 算是 Linux 下簡潔的音訊播放器。
 
 ```zsh
-sudo pacman mpv
+sudo pacman -S mpv
 ```
 
 ### 網易雲音樂
@@ -147,6 +147,8 @@ sudo pacman -S spectacle
 
 ### 圖片檢視器
 
+> 安裝 digikam 後就自動幫你安裝了
+
 ```zsh
 sudo pacman -S showfoto
 ```
@@ -161,10 +163,28 @@ sudo pacman -S digikam
 
 ### Gif 圖片
 
+> 註：不推薦用這個錄屏。推薦使用下面的 kazam
+
 Peek 可以錄製螢幕並轉成 Gif。
 
 ```zsh
 sudo pacman -S peek
+```
+
+### 錄屏工具
+
+這個工具使用很方便，推薦。
+
+```
+yay -S kazam
+```
+
+### 繪圖
+
+**krita** 堪稱 Linux 上的 PS，開源。
+
+```
+yay -S krita
 ```
 
 ## 百度網盤
@@ -185,6 +205,18 @@ sudo pacman -S baidunetdisk-bin
 
 ```zsh
 sudo pacman -S telegram-desktop
+```
+
+### Discord
+
+自從 zoom 取消免費之後，加上騰訊相關產品無法在 Linux 上運行，然而我們需要通訊會議，這個是最適合的，包括語音和屏幕分享。實在是太好用了。
+
+Discord 網頁版也做得很好，騰訊會議就沒有網頁版。
+
+```zsh
+sudo pacman -S discord # 穩定版
+sudo pacman -S discord-ptb # 測試版
+sudo pacman -S discord-canary # 最新版，我都直接裝最新版
 ```
 
 ### TIM
@@ -224,6 +256,14 @@ sudo pacman -S intellij-idea-ultimate-edition # 付費專業版
 ```zsh
 sudo pacman -S java-runtime-common # JRE
 sudo pacman -S java-environment-common # JDK
+```
+
+**2020/07/29 更新：安裝 intellij-idea-ultimate-edition，因為一直無法啟動 IDEA，網上搜一下，發現還要裝另一個套件**
+
+原文：[AUR intellij-idea-ultimate-edition 下面的討論區](https://aur.archlinux.org/packages/intellij-idea-ultimate-edition/)
+
+```zsh
+sudo pacman -S intellij-idea-ultimate-edition-jre
 ```
 
 ### Pycharm
@@ -346,16 +386,17 @@ clash # konsole 輸入 clash
 
 可以進入 [Clash Dashboard](http://clash.razord.top/#/proxies) 進行切換節點與測延遲等操作。
 
-## Screenfetch
+## neofetch
 
 可以快速察看電腦狀況。好看。
 
 ```zsh
-sudo pacman -S screenfetch
-screenfetch # 執行 screenfetch
+sudo pacman -S neofetch
+neofetch # 執行 neofetch
 ```
 
-![08.png](https://i.loli.net/2020/01/05/t2KNz16uDdFWQ95.png)
+<!-- ![08.png](https://i.loli.net/2020/01/05/t2KNz16uDdFWQ95.png) -->
+![13.png](https://i.loli.net/2020/07/29/GtiJMW4CBKnocz3.png)
 
 ## 界面美化
 
@@ -375,9 +416,15 @@ sudo pacman -S latte-dock
 
 我偏向 Mac 風，Mac 風真的好看。
 
+將 [McMojave KDE Theme](https://github.com/vinceliuice/McMojave-kde) 從 Github 下載下來，解壓壓縮包後進入資料夾，執行以下指令：
+
 ```zsh
-sudo pacman -S mojave-gtk-theme-git
+./install.sh
 ```
+
+#### preview
+
+![dark](https://raw.githubusercontent.com/vinceliuice/McMojave-kde/master/plasma/look-and-feel/com.github.vinceliuice.McMojave/contents/previews/fullscreenpreview.jpg)
 
 ### Icon
 
@@ -385,7 +432,7 @@ sudo pacman -S mojave-gtk-theme-git
 
 ```zsh
 yay -S numix-circle-icon-theme-git
-yay -S papirus-icon-theme-git
+yay -S papirus-icon-theme-git # 推薦，太好看了
 ```
 
 ### SDDM
@@ -394,11 +441,26 @@ yay -S papirus-icon-theme-git
 
 我在這裡推薦使用 [Suger Candy for SDDM](https://store.kde.org/p/1312658)，幸好也有人放上了 AUR。
 
-官方文檔也在設置檔案的參數說明得很清楚，我就不再這多贅述了。
+官方文檔也在設置檔案的參數說明得很清楚，我就不再這多贅述了。**在 `/usr/share/sddm/themes/Sugar-Candy/` 的 `theme.conf` 進行修改。**
 
 ```zsh
 sudo pacman -S sddm-theme-sugar-candy-git
 ```
+
+![Screenshot of the interface of the Sugar Candy theme for SDDM](https://framagit.org/MarianArlt/sddm-sugar-candy/-/raw/master/Previews/PartialBlur.png)
+
+
+### GRUB THEME
+
+沒錯！GRUB 也可以改成自己想要的，將 [Flat Design themes for Grub2](https://github.com/vinceliuice/grub2-themes) zip 包從 Github 下載下來，解壓後進入資料夾輸入官網說的安裝教學。**細節修改可以進入 `/usr/share/grub/themes/` 裡面自行修改**。
+
+我裝的主題是 **Tela grub theme**，有修改字體大小和字型，編輯 `/usr/share/grub/themes/Tela/theme.txt`：
+
+```zsh
+item_font = "Noto Sans Regular 24"
+```
+
+![Tela grub theme](https://raw.githubusercontent.com/vinceliuice/grub2-themes/master/screenshots/grub-theme-tela.jpg)
 
 ### 窗口特效
 
@@ -431,3 +493,4 @@ sudo pacman -S sddm-theme-sugar-candy-git
 * [2019年wine QQ最完美解决方案（多Linux发行版通过测试并稳定运行）](https://www.lulinux.com/archives/1319)
 * [Java (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Java_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 * [Linux 下好用的四款 ss/ssr 客戶端](https://blog.skihome.xyz/posts/cf71037e/)
+* [AUR intellij-idea-ultimate-edition 下面的討論區](https://aur.archlinux.org/packages/intellij-idea-ultimate-edition/)

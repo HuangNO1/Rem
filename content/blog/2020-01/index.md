@@ -22,7 +22,11 @@ img : "images/blog/2020-01/kde-logo.png"
 
 我們在上次的安裝教學 Part 1 已經在尾部補充將 networkmanager 裝上了，所以你不需要像上次教學那麼繁瑣，基本插網線就能連到。
 
+> 註：注意使用 `systemctl` 啟用 **networkmanager** 服務時要注意大小寫，開頭要大寫。
+
 ```zsh
+systemctl enable NetworkManager # 設定開機自啟
+systemctl strat NetworkManager # 啟用 Netmanager
 ping baidu.com # 確認連網
 ```
 
@@ -46,9 +50,11 @@ chown user:user /home/user # 修改使用者與使用者群組
 
 為了安全，我們可以使用 sudo 進行 root 權限操作，編輯 `/etc/sudoers`。
 
+> 註：這裡不能使用 vim 編輯，會顯示權限不足，是只讀狀態，所以要改用 nano。
+
 ```zsh
 pacman -S sudo # 安裝 sudo
-vim /etc/sudoers # 編輯 /etc/sudoers
+nano /etc/sudoers # 編輯 /etc/sudoers
 ```
 
 接著將上一步驟的使用者添加到 sudo。添加  `user ALL = (ALL) ALL` 在 `root` 下面。
@@ -61,6 +67,8 @@ user ALL = (ALL) ALL # 新增使用者
 ```
 
 ## 添加 ArchLinuxcn 源
+
+> 註：2020/07/29 **關於 GPG 金鑰遇到的問題解決方法，我已經補充到此文末的重要補充**
 
 Archlinuxcn 庫有很多平常實用的工具，但是官方倉庫沒有的東西。
 
@@ -131,10 +139,13 @@ pacman -S plasma-desktop
 
 Gnome 桌面只要安裝 gnome 包即可，還有一個 gnome-extra 包可以提供額外的常用軟體和幾個遊戲，你可以安裝時選擇你要的軟體，沒必要全選，當然也可以不装這个包。
 
+**私人強烈建議不安裝 gnome-extra 這個包，太多垃圾了，我後面刪得很累**
+
 > 註：在輸入 pacman 下載安裝指令時套件之間的空格不影響其指令執行。
 
 ```zsh
-pacman -S gnome gnome-extra
+pacman -S gnome # 推薦
+pacman -S gnome gnome-extra # 不推薦
 ```
 
 ### 啟動器
@@ -210,11 +221,20 @@ systemctl enable gdm # 開機自啟
 > 註：Arch 使用者軟體倉庫 (AUR) 是由社群推動的使用者軟體庫。它包含了軟體包描述單 (PKGBUILD)，可以用 makepkg 從原始碼編譯軟體包，並透過 Pacman 安裝。 透過 AUR 可以在社群間分享、組織新進軟體包，熱門的軟體包有機會被收錄進 community[broken link: invalid section] 軟體庫。這份文件將解釋如何存取、使用 AUR。 
 
 ```zsh
-pacman -S yay # 下載 yay
+pacman -S yay # 下載安裝 yay
+pacman -S base-devel # 下載安裝 base-devel 編譯工具包
 yay -S arch-prime-git # 下載 arch-prime-git
 ```
 
+如果有 Nvidia 卡，要先安裝 `nvidia` 套件，然後重起電腦，讓 arch-prime-git 能偵測到顯卡（Nvidia）。
+
+```zsh
+pacman -S nvidia # 安裝 N 卡套件
+```
+
 先初始化 arch-prime-git。
+
+> 註：這個指令貌似要在一般使用者中執行，不能是 Root 使用者（超級使用者），如果在 Root 使用者下無法執行 init，就輸入 `exit` 指令登出，重新以一般使用者登入。
 
 ```zsh
 prime-select init
@@ -302,6 +322,8 @@ export QT_IM_MODULE="fcitx"
 
 為了能掛載病讀取外部磁碟（e.g. HDD、SSD），需要安裝 `ntfs-3g`。
 
+**如果你使用的文件系統是 Btrfs 或是 XFS 就不需要下載這東西。**
+
 ```zsh
 pacman -S ntfs-3g
 ```
@@ -314,7 +336,9 @@ pacman -S ntfs-3g
 pacman -S konsole
 ```
 
-## 重要補充 - 聯想 Y7000 的連網問題
+## 重要補充
+
+### 聯想 Y7000 的連網問題
 
 聯想筆電通常在連無線網路上有一個坑 - **Networkmanager 無法啟用無線網卡**，算是...聯想筆電的特色，這裡我感謝 Telegram [#archlinux-cn](https://t.me/archlinuxcn_group) 群中的 **@Asterism** 大佬幫助我解決問題。
 
@@ -336,6 +360,17 @@ sudo tee /etc/modprobe.d/ideapad.conf <<< "blacklist ideapad_laptop" # 永久生
 ```
 
 接著再次輸入 `rfkill list` 查看狀態，如果發現 `Wireless LAN` 的 `Soft blocked` 和 `Hard blocked` 都是 `no`就行了，無線網路也能連結了。
+
+### pacman 中 archlinux-cn 無法更新下載
+
+如果你有在更新或下載時，顯示 GPG 失效或錯誤等訊息，可以嘗試用以下方法解決。我也都是靠這方法解決大部份問題。做完以下步驟後用 pacman 同步一下資料庫，然後再試著下載看看。
+
+```zsh
+rm -rf /etc/pacman.d/gnupg
+pacman-key --init
+pacman-key --populate archlinux
+pacman-key --populate archlinuxcn
+```
 
 ## Reference
 

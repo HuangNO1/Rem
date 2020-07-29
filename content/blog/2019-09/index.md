@@ -348,6 +348,8 @@ hwclock --systohc # 生成 /etc/adjtime
 
 ### 4. 添加本地語系
 
+> 註：進入 `arch-chroot` 後需要將 nano 和 vim 裝上去，`pacman -S nano vim`，這樣才能使用這些工具。
+
 編輯 `locale.gen` 把自己要用的語言註解去掉，也就是去掉開頭的 `#`，一定要取消註解 `en_US.UTF-8 UTF-8`，建議取消註解**帶 `UTF-8` 的語言**，**把 GBK 和 BIG5 註解去掉可以支援更多字**。
 
 ```zsh
@@ -598,13 +600,11 @@ submenu 'Advanced options for Arch Linux' $menuentry_id_option 'gnulinux-advance
 
 因為拔掉 USB 重啟電腦後，會發現關於**連網功能不好處理**，使用 `ip link` 後 `dhcpcd` 過於繁瑣，建議就在這裡就安裝連網的管理器。
 
-> 註：注意使用 `systemctl` 啟用 **networkmanager** 服務時要注意大小寫，開頭要大寫。
+> 註：在 `Chroot` 中無法使用 `systemctl`，所以要等全部裝完後再啟用。
 
 ```zsh
 arch-chroot /mnt # 進入 Chroot
 pacman -S networkmanager # 安裝 networkmanager
-systemctl enable NetworkManager # 設定開機自啟
-systemctl strat NetworkManager # 啟用 Netmanager
 exit # 退出 Chroot
 ```
 
@@ -615,6 +615,8 @@ exit # 退出 Chroot
 ## 文件系統 XFS 與 Btrfs
 
 > 2020 / 02 / 05 補充文件系統 `XFS` 和 `Btrfs`。
+
+> 2020 / 07 / 29 更新，我已經用上 `Btrfs`，真香，讀寫速度變很快。
 
 因為我文件系統使用 `ext4` 使用 `ntfs-3g` 寫入時非常慢，甚至卡頓，我在這裡推薦使用 `XFS` 或是 `Btrfs`。但是 `Btrfs` 還不夠穩定，所以我這裡是推薦 `XFS`。
 
@@ -639,8 +641,8 @@ pacstrap /mnt base linux linux-firmware xfsprogs
 ### Btrfs
 
 ```zsh
-mkfs.btrfs -L /dev/nvme0n1p5 #格式化 root
-mkfs.btrfs -L /dev/sda4 #格式化 home
+mkfs.btrfs -L arch-root /dev/nvme0n1p5 #格式化 root
+mkfs.btrfs -L arch-home /dev/sda4 #格式化 home
 ```
 
 在安裝 `base` 時要輸入以下內容，將 `btrfs-progs` 包加入：
