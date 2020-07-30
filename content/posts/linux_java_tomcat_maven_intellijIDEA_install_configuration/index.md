@@ -9,7 +9,7 @@ draft: false
 description: ""
 tags: ["ArchLinux", "Linux", "Java", "JDK", "Tomcat", "Maven", "IntelliJ", "IDEA"]
 categories: ["Linux"]
-featuredImage: "/featuredImage/linux_java_tomcat_maven_intellijIDEA_install_configuration.png"
+featuredImage: "/featuredImage/compressed/linux_java_tomcat_maven_intellijIDEA_install_configuration.png"
 ---
 <!--2020/01/28 edited by Huang Po-Hsun-->
 

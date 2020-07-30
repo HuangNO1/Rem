@@ -10,7 +10,7 @@ weight: 70
 tags: ["ArchLinux", "VScode", "C", "C++", "GCC", "GDB"]
 description: ""
 categories: ["ArchLinux"]
-featuredImage: "/featuredImage/visual_studio_code_2019_icons_preview.png"
+featuredImage: "/featuredImage/compressed/visual_studio_code_2019_icons_preview.png"
 ---
 <!-- 在 Archlinux 搭建 VScode C/C++ 開發環境（GCC）及 調試（GDB）
 === -->

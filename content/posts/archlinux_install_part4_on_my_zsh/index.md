@@ -10,7 +10,7 @@ description: ""
 tags: ["ArchLinux", "Linux", "zsh", "oh-my-zsh"]
 categories: ["ArchLinux"]
 author: "Huang Po-Hsun"
-featuredImage: "/featuredImage/archlinux_install_part4_on_my_zsh.png"
+featuredImage: "/featuredImage/compressed/archlinux_install_part4_on_my_zsh.png"
 license: ""
 ---
 <!--2020/01/05 edited by Huang Po-Hsun-->

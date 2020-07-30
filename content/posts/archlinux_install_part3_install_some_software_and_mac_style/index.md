@@ -9,7 +9,7 @@ date: 2020-01-05T15:25:28+08:00
 draft: false
 tags: ["ArchLinux", "Linux"]
 categories: ["ArchLinux"]
-featuredImage: "/featuredImage/archlinux_install_part3_install_some_software_and_mac_style.png"
+featuredImage: "/featuredImage/compressed/archlinux_install_part3_install_some_software_and_mac_style.png"
 license: ""
 ---
 <!--2020/01/05 edited by Huang Po-Hsun-->

@@ -10,7 +10,7 @@ draft: false
 description: ""
 tags: ["小丑", "Joker","影片賞析"]
 categories: ["Moment"]
-featuredImage: "/featuredImage/joker_movie_moment.png"
+featuredImage: "/featuredImage/compressed/joker_movie_moment.png"
 license: ""
 ---
 <!--2019/10/13 edited by Huang Po-Hsun-->

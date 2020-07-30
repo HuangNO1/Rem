@@ -9,7 +9,7 @@ draft: false
 description: ""
 tags: ["ArchLinux", "Linux", "npm"]
 categories: ["Linux"]
-featuredImage: "/featuredImage/linux_npm_configuration.png"
+featuredImage: "/featuredImage/compressed/linux_npm_configuration.png"
 license: ""
 ---
 <!--2020/02/06 edited by Huang Po-Hsun-->

@@ -9,7 +9,7 @@ draft: false
 description: ""
 tags: ["ArchLinux", "Linux", "kde", "plasma", "video", "desktop", "Wallpaper"]
 categories: ["ArchLinux"]
-featuredImage: "/featuredImage/archlinux_kde_video_wallpaper.png"
+featuredImage: "/featuredImage/compressed/archlinux_kde_video_wallpaper.png"
 license: ""
 ---
 <!--2020/01/15 edited by Huang Po-Hsun-->

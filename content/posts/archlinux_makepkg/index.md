@@ -9,7 +9,7 @@ draft: false
 description: ""
 tags: ["ArchLinux", "Linux", "PKGBUILD", "Package", "AUR"]
 categories: ["ArchLinux"]
-featuredImage: "/featuredImage/archlinux_makepkg.png"
+featuredImage: "/featuredImage/compressed/archlinux_makepkg.png"
 ---
 <!--2020/01/31 edited by Huang Po-Hsun-->
 

@@ -9,7 +9,7 @@ draft: false
 description: ""
 tags: ["ArchLinux", "Linux", "Python", "pyenv"]
 categories: ["Linux"]
-featuredImage: "/featuredImage/linux_python_pyenv.png"
+featuredImage: "/featuredImage/compressed/linux_python_pyenv.png"
 license: ""
 ---
 <!--2020/01/27 edited by Huang Po-Hsun-->

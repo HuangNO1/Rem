@@ -9,7 +9,7 @@ date: 2020-01-04T15:24:28+08:00
 draft: false
 tags: ["ArchLinux", "Linux"]
 categories: ["ArchLinux"]
-featuredImage: "/featuredImage/archlinux_install_part2_general_recommendations.png"
+featuredImage: "/featuredImage/compressed/archlinux_install_part2_general_recommendations.png"
 license: ""
 ---
 <!--2020/01/04 edited by Huang Po-Hsun-->

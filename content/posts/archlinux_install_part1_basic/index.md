@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["ArchLinux", "Linux"]
 categories: ["ArchLinux"]
-featuredImage: "/featuredImage/archlinux_install_part1_basic.png"
+featuredImage: "/featuredImage/compressed/archlinux_install_part1_basic.png"
 ---
 <!--2019/09/28 edited by Huang Po-Hsun-->
 
