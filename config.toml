@@ -447,9 +447,9 @@ enableEmoji = true
       # Disqus comment config
       [params.page.comment.disqus]
         # 
-        enable = false
+        enable = true
         # Disqus shortname to use Disqus in posts
-        shortname = ""
+        shortname = "remblog"
       # Gitalk comment config
       [params.page.comment.gitalk]
         # 
