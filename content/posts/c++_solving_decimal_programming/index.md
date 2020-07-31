@@ -167,7 +167,7 @@ Note:
     }
 ```
 
-1. 在輸出時使用 API 提供的函式格式化。
+8. 在輸出時使用 API 提供的函式格式化。
 
 ```C++
     cout << setiosflags(ios::fixed) << setprecision(8);
