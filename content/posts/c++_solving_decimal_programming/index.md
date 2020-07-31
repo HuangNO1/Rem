@@ -9,7 +9,7 @@ draft: false
 tags: ["C++", "小數", "進制", "演算法"]
 description: ""
 categories: ["C/C++"]
-featuredImage: "/featuredImage/compressed/c++_solving_decimal_programing.png"
+featuredImage: "/featuredImage/compressed/c++_solving_decimal_programming.png"
 license: ""
 ---
 <!--2019/10/11 edited by Huang Po-Hsun -->

@@ -6,7 +6,6 @@ subtitle: ""
 # 上次修改的時間
 lastmod: 2020-03-04T15:58:26+08:00
 draft: false
-weight: 70
 tags: ["ArchLinux", "VScode", "C", "C++", "GCC", "GDB"]
 description: ""
 categories: ["ArchLinux"]
