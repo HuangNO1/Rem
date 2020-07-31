@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["Python", "進制", "演算法", "NPSC", "羅馬數字"]
 categories: ["Python"]
-# featuredImage: "/featuredImage/compressed/archlinux_install_part1_basic.png"
+featuredImage: "/featuredImage/compressed/python_rome_number_programming.jpg"
 ---
 
 ## 前言
