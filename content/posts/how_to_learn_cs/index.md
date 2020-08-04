@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["CS", "計算機科學", "軟件工程", "工程學"]
 categories: ["Moment"]
-featuredImage: "/featuredImage/compressed/csu_freshman_sophomore.png"
+featuredImage: "/featuredImage/compressed/how_to_learn_cs.png"
 ---
 
 ## 學習態度
