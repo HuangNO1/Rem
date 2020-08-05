@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["Python", "Flask", "CORS", "跨域"]
 categories: ["Python"]
-# featuredImage: "/featuredImage/compressed/flask_mysql.png"
+featuredImage: "/featuredImage/compressed/flask_cors.png"
 ---
 
 ## 前言
