@@ -4,7 +4,7 @@ date: 2020-08-04T22:49:28+08:00
 # 副標題
 subtitle: ""
 # 上次修改的時間
-lastmod: 2020-08-05T22:49:26+08:00
+lastmod: 2020-08-05T12:49:26+08:00
 draft: false
 description: ""
 license: ""
@@ -15,7 +15,7 @@ featuredImage: "/featuredImage/compressed/flask_mysql.png"
 
 ## 前言
 
-我一開始學 Flask 時是看 Flask 的官方教學學的，不得不說[ Flask 官方文檔](https://flask.palletsprojects.com/en/1.1.x/)寫得很好。因為 **Flask 官方教學是使用 Sqlite 做為數據庫**，但是我想要使用 MySQL，在自己網上搜索，加上自己的鑽研手做，這裡紀錄我摸索的結果。因為我偏好使用原生 SQL 語法，所以下面的數據庫操作都是原生語句，例子是我之前做的某個項目裡面拿出來的。
+我一開始學 Flask 時是看 Flask 的官方教學學的，不得不說[ Flask 官方文檔](https://flask.palletsprojects.com/en/1.1.x/)寫得很好。因為 **Flask 官方教學是使用 Sqlite 做為數據庫**，但是我想要使用 MySQL，在自己網上搜索，加上自己的鑽研手做，這裡紀錄我摸索的結果。因為我偏好使用原生 SQL 語法，所以下面的數據庫操作都是原生語句，例子也是我之前做的某個項目裡面拿出來的。
 
 ## 安裝
 
