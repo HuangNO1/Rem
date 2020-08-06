@@ -8,7 +8,7 @@ lastmod: 2020-08-05T21:49:26+08:00
 draft: false
 description: ""
 license: ""
-tags: ["React", "前端", "npm", "JSX"]
+tags: ["React", "前端", "npm", "JSX", "JS", "Redux", "ReactRouter"]
 categories: ["前端"]
 featuredImage: "/featuredImage/compressed/react_learn_note.png"
 ---
