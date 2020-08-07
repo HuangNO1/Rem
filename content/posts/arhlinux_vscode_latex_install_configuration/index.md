@@ -1,16 +1,16 @@
 ---
 title: "在 ArchLinux 上搭建 LaTeX 環境並使用 VScode 編寫"
-date: 2020-08-07T13:49:28+08:00
+date: 2020-08-07T16:49:28+08:00
 # 副標題
 subtitle: ""
 # 上次修改的時間
-lastmod: 2020-08-07T13:49:26+08:00
+lastmod: 2020-08-07T16:49:26+08:00
 draft: false
 description: ""
 license: ""
 tags: ["ArchLinux", "VScode", "LaTeX"]
 categories: ["LaTeX"]
-featuredImage: "/featuredImage/compressed/markdown_learn_note_basic_syntax.png"
+featuredImage: "/featuredImage/compressed/arhlinux_vscode_latex_install_configuration.png"
 ---
 
 ## 前言
