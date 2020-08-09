@@ -1,5 +1,5 @@
 ---
-title: "React 學習筆記"
+title: "React 學習筆記 - JSX、組件、渲染、路由、Redux"
 date: 2020-08-05T21:49:28+08:00
 # 副標題
 subtitle: ""
