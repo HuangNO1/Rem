@@ -8,7 +8,7 @@ lastmod: 2020-08-05T20:49:26+08:00
 draft: false
 description: ""
 license: ""
-tags: ["Python", "Flask", "CORS", "跨域"]
+tags: ["Python", "Flask", "CORS", "跨域", "Web"]
 categories: ["Python"]
 featuredImage: "/featuredImage/compressed/flask_cors.png"
 ---

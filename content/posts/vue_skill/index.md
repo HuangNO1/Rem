@@ -8,7 +8,7 @@ lastmod: 2020-07-31T16:49:26+08:00
 draft: false
 description: ""
 license: ""
-tags: ["Vue", "Vue-cli", "前端", "npm", "Vuex", "Vue-Router", "Request", "Axios"]
+tags: ["Vue", "Vue-cli", "前端", "npm", "Vuex", "Vue-Router", "Request", "Axios", "Web"]
 categories: ["前端"]
 featuredImage: "/featuredImage/compressed/vue_skill.png"
 ---

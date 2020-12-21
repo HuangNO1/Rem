@@ -8,7 +8,7 @@ lastmod: 2020-08-05T13:49:26+08:00
 draft: false
 description: ""
 license: ""
-tags: ["Python", "Flask", "JWT", "Token"]
+tags: ["Python", "Flask", "JWT", "Token", "Web"]
 categories: ["Python"]
 featuredImage: "/featuredImage/compressed/flask_jwt.png"
 ---

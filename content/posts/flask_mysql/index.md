@@ -8,7 +8,7 @@ lastmod: 2020-08-05T12:49:26+08:00
 draft: false
 description: ""
 license: ""
-tags: ["Python", "Flask", "MySQL", "Database", "數據庫"]
+tags: ["Python", "Flask", "MySQL", "Database", "數據庫", "Web"]
 categories: ["Python"]
 featuredImage: "/featuredImage/compressed/flask_mysql.png"
 ---
