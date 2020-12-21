@@ -141,7 +141,7 @@ sudo mysql_secure_installation # 會要求你設置 root 密碼
 
 在數據庫方面，我們經常遇到的錯誤是會**使用 `root` 去登入數據庫，常常碰到登不進去的問題**，怎麼修改 `root` 密碼也沒辦法。
 
-這裡有個很好的解決方法，就是新增一個一樣擁有 `root` 權限的使用者，並使用該使用者登入數據庫就沒問題了。
+這裡有個很好的解決方法，就是**新增一個一樣擁有 `root` 權限的使用者，並使用該使用者登入數據庫**就沒問題了。所以我每次都是使用這方法解決，推薦。
 
 進入 MySQL：
 
@@ -150,6 +150,8 @@ mysql
 ```
 
 新增一個使用者為 `admin`，密碼為 `password`，並擁有所有權限：
+
+> 可自行修改，不需要跟我一模一樣。
 
 ```sql
 MariaDB [(none)]> GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
@@ -177,7 +179,18 @@ yum install nginx
 
 ### 新增項目目錄
 
-我們預先將要部署的項目
+我們預先將要部署的項目目錄新建好：
+
+```zsh
+cd /home
+mkdir sxblog
+cd sxblog
+mkdir java python sql vue
+```
+
+### 開端口
+
+因為服務器會有防火牆這些功能，要到服務器控制台的安全組將進方向和出方向需要用到的後端端口與前端端口都打開，不然外部訪問不了服務器，阿里雲的服務器有點奇妙的是無法一次將所有的端口打開，騰訊雲卻可以。
 
 ## 配置數據庫
 
@@ -190,13 +203,28 @@ yum install nginx
 scp ./sxblog.sql root@1.2.3.4:/home/sxblog/sql/sxblog.sql
 ```
 
-## 將後端打包
+接著將該數據庫文件導入數據庫系統：
+
+```zsh
+# 連上服務器
+ssh root@1.2.3.4
+# 使用文章上面我新增的使用者
+mysql -u admin -p
+```
+
+```sql
+MariaDB [(none)]>create database sxblog;
+MariaDB [(none)]>use sxblog;
+MariaDB [(sxblog)]>source /home/sxblog/sql/sxblog.sql;
+```
+
+## 將後端部署
 
 ### Spring Boot打包
 
 #### 修改配置文件
 
-再打包後端 SpringBoot 項目前，你需要先修改自己項目的配制文件。在 SpringBoot 項目目錄中，要確認依賴是否有固定的版本，然後確認是否有加入 Maven 依賴：
+再打包後端 SpringBoot 項目前，你需要先修改自己項目的配制文件。在 SpringBoot 項目目錄中，要**確認依賴是否是固定的版本**，然後確認是否有加入 Maven 依賴：
 
 > 使用 JAR 包啟動 Web 後端應用並不需要在服務器上配置 Tomcat 容器環境，因為 SpringBoot 有內置 Tomcat 運行，但是要**確保你的 JDK 版本是 1.8 以上**。
 
@@ -212,7 +240,43 @@ scp ./sxblog.sql root@1.2.3.4:/home/sxblog/sql/sxblog.sql
 </build>
 ```
 
+然後調整項目的配置參數：將數據庫的連接使用者改成是服務器上數據庫的使用者 `admin`，密碼也要變，預設的後端端口只要不跟其他後端衝突就不用改。
 
+在**有 `pom.xml` 的目錄**下執行 Maven 的指令：
+
+```zsh
+maven clean # 清理
+maven package # 打包
+```
+
+接下來就會看到目錄下出現了一個 **`target` 資料夾**，裡面是打包成 Jar 包的目錄，進入該目錄並在本地運行試試：
+
+```zsh
+# 這裡的 xxxx 需要改成你實際打包出來的包名
+java -jar xxxx.jar
+```
+
+進入瀏覽器輸入運行的 IP 和 Port 就知道有沒有問題，如果運行過程有報錯，可能是打包失敗，需要查看自己的源碼哪裡寫錯了。
+
+#### 部署到服務器
+
+確認都沒問題了之後我們就可以部署到服務器上了。
+
+將整個 `target` 資料夾 SCP 上傳到服務器端。
+
+```zsh
+scp -r ./target root@1.2.3.4:/home/sxblog/java/target
+```
+
+進入服務器端運行 Jar 包，**使用 `nohup` 讓該進程在我們退出連結後依然能在後台運行，`>temp.txt` 是可以指定我們的日誌輸出文件**。
+
+```zsh
+ssh root@1.2.3.4
+# 使用 nohup
+nohup java -jar test.jar >temp.txt &
+```
+
+### Flask
 
 ## 前端打包
 
