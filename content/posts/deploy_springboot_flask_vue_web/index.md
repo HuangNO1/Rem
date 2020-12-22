@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["Vue", "Vue-cli", "Web", "npm", "SpringBoot", "Linux", "Java", "JDK", "Maven", "IntelliJ", "IDEA", "Jar", "Nginx", "Python", "Flask"]
 categories: ["Linux"]
-featuredImage: "/featuredImage/compressed/deploy_springboot_flask_vue_web.png"
+featuredImage: "/featuredImage/compressed/deploy_springboot_flask_vue_web.jpg"
 ---
 
 ## 前言
