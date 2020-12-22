@@ -8,7 +8,7 @@ lastmod: 2020-12-21T16:49:26+08:00
 draft: false
 description: ""
 license: ""
-tags: ["Vue", "Vue-cli", "Web", "npm", "SpringBoot", "Linux", "Java", "JDK", "Maven", "IntelliJ", "IDEA", "Jar", "Nginx", "Python", "Flask"]
+tags: ["Vue", "Vue-cli", "Server", "Web", "npm", "SpringBoot", "Linux", "Java", "JDK", "Maven", "IntelliJ", "IDEA", "Jar", "Nginx", "Python", "Flask"]
 categories: ["Linux"]
 featuredImage: "/featuredImage/compressed/deploy_springboot_flask_vue_web.jpg"
 ---
