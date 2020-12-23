@@ -1,10 +1,10 @@
 ---
-title: "LeetCode 題庫 - 兩數之和"
-date: 2020-12-23T04:17:28+08:00
+title: "LeetCode 題庫 - Two Sum (兩數之和)"
+date: 2020-12-23T4:17:28+08:00
 # 副標題
 subtitle: ""
 # 上次修改的時間
-lastmod: 2020-12-23T04:17:26+08:00
+lastmod: 2020-12-23T4:17:26+08:00
 draft: false
 description: ""
 license: ""
@@ -19,7 +19,7 @@ featuredImage: "/featuredImage/compressed/leetcode.jpg"
 
 ## 題目
 
-[Two Sum](https://leetcode.com/problems/two-sum/)
+[Two Sum (兩數之和)](https://leetcode.com/problems/two-sum/)
 
 ## 題目描述
 
