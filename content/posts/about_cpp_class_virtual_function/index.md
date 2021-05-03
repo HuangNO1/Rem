@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["C++", "Class", "Virtual", "Function", "虛函數", "純虛函數", "繼承"]
 categories: ["C/C++"]
-featuredImage: "/featuredImage/compressed/about_c++_class_virtual_function.png"
+featuredImage: "/featuredImage/compressed/about_cpp_class_virtual_function.png"
 ---
 
 ## 前言
