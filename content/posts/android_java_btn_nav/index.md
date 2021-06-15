@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["Android", "Java", "Android Studio", "Navigation", "Fragment", "Bottom", "Button"]
 categories: ["Android"]
-featuredImage: "/featuredImage/compressed/android_image.png"
+featuredImage: "/featuredImage/compressed/android_java_nav.png"
 ---
 
 ## 前言

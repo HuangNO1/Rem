@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["Android", "Java", "Android Studio", "Tabs", "Fragment", "Views", "ViewPager"]
 categories: ["Android"]
-featuredImage: "/featuredImage/compressed/android_image.png"
+featuredImage: "/featuredImage/compressed/android_java_tabbed.jpg"
 ---
 
 ## 前言

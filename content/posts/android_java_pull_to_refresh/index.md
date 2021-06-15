@@ -10,7 +10,7 @@ description: ""
 license: ""
 tags: ["Android", "Java", "Android Studio", "RecyclerView", "Card", "List", "Adapter", "UI", "Render"]
 categories: ["Android"]
-featuredImage: "/featuredImage/compressed/android_image.png"
+featuredImage: "/featuredImage/compressed/android_java_pull_to_refresh.png"
 ---
 
 ## 前言
