@@ -1,5 +1,5 @@
 ---
-title: "Android Java - 簡易今日頭條新聞數據請求與卡片渲染"
+title: "Android Java - 簡易今日頭條 - 簡易今日頭條新聞數據請求與卡片渲染"
 date: 2021-06-15T18:03:28+08:00
 # 副標題
 subtitle: ""

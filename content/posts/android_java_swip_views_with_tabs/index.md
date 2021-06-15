@@ -1,5 +1,5 @@
 ---
-title: "Android Java - Tabs 頻道頁面切換"
+title: "Android Java - 簡易今日頭條 - Tabs 頻道頁面切換"
 date: 2021-06-15T09:03:28+08:00
 # 副標題
 subtitle: ""

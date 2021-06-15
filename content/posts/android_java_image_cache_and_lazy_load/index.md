@@ -1,5 +1,5 @@
 ---
-title: "Android Java - 圖片緩存與懶加載"
+title: "Android Java - 簡易今日頭條 - 圖片緩存與懶加載"
 date: 2021-06-15T18:03:28+08:00
 # 副標題
 subtitle: ""

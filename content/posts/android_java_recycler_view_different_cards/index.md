@@ -1,5 +1,5 @@
 ---
-title: "Android Java - RecyclerView 渲染多種不同樣式的新聞卡片"
+title: "Android Java - 簡易今日頭條 - RecyclerView 渲染多種不同樣式的新聞卡片"
 date: 2021-06-15T15:03:28+08:00
 # 副標題
 subtitle: ""

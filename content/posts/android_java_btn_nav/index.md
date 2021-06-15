@@ -1,5 +1,5 @@
 ---
-title: "Android Java - 實現底部按鈕導覽切換 Fragment 頁面"
+title: "Android Java - 簡易今日頭條 - 實現底部按鈕導覽切換 Fragment 頁面"
 date: 2021-06-15T08:03:28+08:00
 # 副標題
 subtitle: ""
