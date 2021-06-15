@@ -19,7 +19,7 @@ featuredImage: "/featuredImage/compressed/android_java_pull_to_refresh.png"
 
 ## Display
 
-![Display_pull_to_refresh.gif](./index/Display_pull_to_refresh.gif "下拉刷新展示")
+![Display_pull_to_refresh.gif](index/Display_pull_to_refresh.gif "下拉刷新展示")
 
 ## 項目倉庫
 

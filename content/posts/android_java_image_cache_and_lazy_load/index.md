@@ -19,7 +19,7 @@ featuredImage: "/featuredImage/compressed/android_image.png"
 
 ## Display
 
-![Display_image_picasso.gif](./index/Display_image_picasso.gif "圖片緩存與懶加載展示")
+![Display_image_picasso.gif](index/Display_image_picasso.gif "圖片緩存與懶加載展示")
 
 ## 項目倉庫
 

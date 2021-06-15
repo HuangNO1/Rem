@@ -19,7 +19,7 @@ featuredImage: "/featuredImage/compressed/android_image.png"
 
 ## Display
 
-![Display_request_and_render.gif](./index/Display_request_and_render.gif "請求與渲染展示")
+![Display_request_and_render.gif](index/Display_request_and_render.gif "請求與渲染展示")
 
 ## 項目倉庫
 

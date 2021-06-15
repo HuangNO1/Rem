@@ -23,7 +23,7 @@ featuredImage: "/featuredImage/compressed/android_java_card_list.jpg"
 
 ## Display
 
-![Display_recyclerView_different_card_styles.gif](./index/Display_recyclerView_different_card_styles.gif "不同卡片樣式展示")
+![Display_recyclerView_different_card_styles.gif](index/Display_recyclerView_different_card_styles.gif "不同卡片樣式展示")
 
 ## 具體實現
 
