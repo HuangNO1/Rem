@@ -1,10 +1,10 @@
 ---
 title: "Android Java - 簡易今日頭條 - 圖片緩存與懶加載"
-date: 2021-06-15T18:03:28+08:00
+date: 2021-06-15T18:33:28+08:00
 # 副標題
 subtitle: ""
 # 上次修改的時間
-lastmod: 2021-06-15T18:03:28+08:00
+lastmod: 2021-06-15T18:33:28+08:00
 draft: false
 description: ""
 license: ""
@@ -15,7 +15,7 @@ featuredImage: "/featuredImage/compressed/android_image.png"
 
 ## 前言
 
-上次的文章中我寫了關於[新聞數據請求渲染](https://huangno1.github.io/android_java_recycler_view_different_cards/)的部份。這篇文章就簡要說一下怎麼做到圖片緩存與懶加載。
+上次的文章中我寫了關於[新聞數據請求渲染](https://huangno1.github.io/android_java_recyclerview_different_cards/)的部份。這篇文章就簡要說一下怎麼做到圖片緩存與懶加載。
 
 ## Display
 
