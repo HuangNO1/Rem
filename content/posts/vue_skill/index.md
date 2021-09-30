@@ -591,7 +591,7 @@ Vue.use(VueAxios, axios)
 #### Params
 
 ```js
-import 'axios' from 'axios'
+import axios from 'axios'
 
 export default {
   // ...

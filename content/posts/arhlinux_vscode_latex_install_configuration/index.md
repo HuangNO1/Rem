@@ -8,7 +8,7 @@ lastmod: 2020-08-07T16:49:26+08:00
 draft: false
 description: ""
 license: ""
-tags: ["ArchLinux", "VScode", "LaTeX"]
+tags: ["ArchLinux", "Linux", "VScode", "LaTeX"]
 categories: ["LaTeX"]
 featuredImage: "/featuredImage/compressed/arhlinux_vscode_latex_install_configuration.png"
 ---
